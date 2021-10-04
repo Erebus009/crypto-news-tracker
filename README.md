@@ -1,1 +1,3 @@
-# group-project-1
+# Crypto-News-Tracker - 
+
+<p>Group members - Mike,Josh,Travis.</p>
