@@ -11,8 +11,6 @@ LIDO_DAO_TOKEN: 78547, IOTA: 12, CONTENT_VALUE_NETWORK: 11170, KLAYTN: 63279, NE
 //this is created dynamically based on the coin being passed, must match a coin in the "coinLIST" object array
 const coin = async (coinType, time = 0) => {
 
-  console.log("the time is: "+ time);
-
   //get the ID from the "coinList" array to match the format required by the API, can not search by just the name
   //bitcoin id = 1, Dogecoin = 20, etc.
     let coinAPI = "https://coinranking1.p.rapidapi.com/coin/" + coinLIST[coinType]
@@ -31,17 +29,20 @@ const coin = async (coinType, time = 0) => {
     if (time === 0){
       return ({
         all: () => coinDetails,
+        name: () => coinDetails.data.coin.name,
         symbol: () => coinDetails.data.coin.symbol,
         price: () => coinDetails.data.coin.price,
-        icon_url: () => coinDetails.data.coin.icon_url,
+        icon_url: () => coinDetails.data.coin.iconUrl,
         change: () => coinDetails.data.coin.change,
-        volume: () => coinDetails.data.coin.volume
+        volume: () => coinDetails.data.coin.volume,
+        history: () => coinDetails.data.coin.history
       });
 
     }else{
       return ({
         all: () => coinDetails,
-        change: () => coinDetails.data.change
+        change: () => coinDetails.data.change,
+        history: () => coinDetails.data.history
       });
 
     }

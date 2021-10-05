@@ -26,10 +26,9 @@
       <section>
          <div class="columns">
          <div class="column ml-5">
-            <h1 class="mb-3 is-size-3">Bitcoin<img class= "coin-symbol" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"></h1>
-            <figure class=" box image is-sqaure">
-               <img src="https://www.investopedia.com/thmb/3W2hqViceXPXsqkVrorWgbIX1Yk=/1828x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/BTC_ALL_graph_coinmarketcap-d9e91016679f4f69a186e0c6cdb23d44.jpg">
-            </figure>
+            <h1 id="coin_name" class="mb-3 is-size-3"></h1>
+              <img class="coin-symbol">
+            <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
          </div>
          <div class="table-container">
             <table class="column is-size-5  table is-bordered">
@@ -76,6 +75,8 @@
          </div>
       </section>
    </body>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <scrip  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></scrip>
