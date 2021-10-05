@@ -11,13 +11,20 @@
   </head>
   <body>
     <header class="section">
-      <div class="columns">
-        <div class="column is-3">
-          <h1 class="is-size-2">Crypto News Tracker</h1>
-        </div>
+
+      <div class="columns is-vcentered">
         <div class="column is-8">
-          <input type="text" class="input is-normal is-5 mt-3"placeholder="Enter crypto coin to begin."/>
+          <h1 class="is-size-1">Crypto News Tracker</h1>
         </div>
+
+        <form class="column" id="search_box">
+            <div class="field">
+                <div class="control">
+                    <input id="coin_search" class="input is-normal" type="text" placeholder="Enter crypto coin to begin.">
+                </div>
+            </div>
+        </form>  
+
       </div>
     </header>
     
@@ -30,6 +37,11 @@
 
 
   </body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <scrip  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></scrip>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <script src="./assets/API_Feed.js"></script>
   <script src="./assets/script.js"></script>
 </html>
 
