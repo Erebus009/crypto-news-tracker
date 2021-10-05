@@ -7,11 +7,27 @@ let myCoinNews;
 
 
 
-async function loadPage(search_coin){
+async function getData(search_coin){
 
-    myCoinDetails = coin("BITCOIN");
-    myCoinNews = news("BITCOIN");
+    myCoinDetails = await coin(search_coin);
+    myCoinNews = await news(search_coin); 
 
+    loadPage();
+
+}
+
+function loadPage(){
+
+    console.log(myCoinDetails.all());
+    console.log(myCoinNews.theNews());
+
+    //function here to build the graph
+
+    //function here to load the coin info
+
+    //function here to load the coin details
+
+    //function here to load the cards
 
 }
 
@@ -49,7 +65,7 @@ function checkInput(search_item){
     }
 
     //call main load function to load the page
-    loadPage(search_coin);
+    getData(search_coin);
 
 }
 
@@ -64,7 +80,9 @@ $("#search_box").on("submit", event => {
 //this will load bitcoin as the defult coin when the pages loads
 //this will allow something to load on the page right when it loads 
 //the user can later search for another coin if they like
+//will also load the last viewed coin if the user returns
 (function(){
-    loadPage("BITCOIN")
+    //add if statement here about if a local key exists and load that instead of the default
+    getData("BITCOIN");
 })();
 
