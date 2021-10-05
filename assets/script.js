@@ -12,7 +12,6 @@ let link = $('#Link')
 
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
-let myCoinDetails24h;
 let myCoinNews;
 //--------------------
 
@@ -21,10 +20,10 @@ let myCoinNews;
 //this is called both when the page loads and after user input
 //once all calls are complete will call the function to load the remaining elements
 async function getData(search_coin){
+    console.log(search_coin);
     
     //go fetch API for both the news and the coin details based on the 'search_coin'
     myCoinDetails = await coin(search_coin);
-    myCoinDetails24h = await coin(search_coin, "24h")
     myCoinNews = await news(search_coin); 
 
     loadPage();
@@ -35,61 +34,21 @@ async function getData(search_coin){
 function loadPage(){
 
     console.log(myCoinDetails.all());
-    console.log(myCoinDetails24h.all());
     console.log(myCoinNews.theNews());
-
-
-    loadGraph();
-
-
    
     //function here to build the graph
 
     //function here to load the coin info
       populateTable();
-
     //function here to load the coin details
 
     //function here to load the cards
 
 }
 
-function loadGraph(){
 
-    let dataPoints = [];
-    let timeStamps = [];
-    let history = myCoinDetails24h.history();
 
-    $("#coin_name").text(myCoinDetails.name())
 
-    $("#coin_name").parent().children("img").attr("src",myCoinDetails.icon_url())
-
-    for(let x = 0; x < history.length; x++){
-        timeStamps.push("[" + moment(history[x].timestamp).format("HH:mm")+ "]");
-        dataPoints.push(history[x].price)
-    }
-
-    new Chart("myChart", {
-        type: "line",
-        
-        title: {
-            text: "Pricing for the last 24 hours",
-            dockInsidePlotArea: true
-        },
-        data: {
-            
-          labels: timeStamps,
-          datasets: [{
-            fill: false,
-            markerType: "none",
-            backgroundColor: "rgba(0,0,255,1.0)",
-            borderColor: "rgba(0,0,255,0.1)",
-            data: dataPoints
-          }]
-        }
-      });
-
-}
 
 //this function will take the user unput from the search field and check if the input is a coin we have access too
 //this is done by checking if the input is in the object array in API_Feed.js
