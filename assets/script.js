@@ -10,7 +10,9 @@ let myCoinNews;
 //this is called both when the page loads and after user input
 //once all calls are complete will call the function to load the remaining elements
 async function getData(search_coin){
-
+    console.log(search_coin);
+    
+    //go fetch API for both the news and the coin details based on the 'search_coin'
     myCoinDetails = await coin(search_coin);
     myCoinNews = await news(search_coin); 
 
@@ -18,6 +20,7 @@ async function getData(search_coin){
 
 }
 
+//this is the primary function to load the elements of the page
 function loadPage(){
 
     console.log(myCoinDetails.all());
