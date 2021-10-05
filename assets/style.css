@@ -10,7 +10,11 @@
 }
 .coin-symbol{
   
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     margin-left: 5px;
+}
+
+#coin_name{
+    display: inline-block;
 }
