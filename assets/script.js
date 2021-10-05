@@ -12,10 +12,12 @@ let myCoinNews;
 function checkInput(search_item){
     //convert the user input to all uppdercase
     let search_coin = search_item.toUpperCase();
-    //then turn all spaces to "_", this is because the object array keys can not have spaces in them
-    search_coin = search_coin.replace(" ","_");
     //trim any white space, just in case
     search_coin =  search_coin.trim();
+    //then turn remaining spaces to "_", this is because the object array keys can not have spaces in them
+    search_coin = search_coin.replace(" ","_");
+    
+    
 
     //check to see if the coin matches one in the array
     if(!(search_coin in coinLIST)){
