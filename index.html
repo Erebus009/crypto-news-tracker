@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/style.css" />
-    <title>Crypto News</title>
-  </head>
-  <body>
-    <header class="section">
-
-      <div class="columns is-vcentered">
-        <div class="column is-8">
-          <h1 class="is-size-1">Crypto News Tracker</h1>
-        </div>
-
-        <form class="column" id="search_box">
-            <div class="field">
-                <div class="control">
-                    <input id="coin_search" class="input is-normal" type="text" placeholder="Enter crypto coin to begin.">
-                </div>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./assets/style.css" />
+      <title>Crypto News</title>
+   </head>
+   <body>
+      <header class="section">
+         <div class="columns is-vcentered">
+            <div class="column is-8">
+               <h1 class="is-size-1">Crypto News Tracker</h1>
             </div>
-        </form>  
-
-      </div>
-    </header>
-    
-    <section>
-
-
-
-
-    </section>
-
-
-  </body>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <scrip  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></scrip>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-  <script src="./assets/API_Feed.js"></script>
-  <script src="./assets/script.js"></script>
+            <form class="column" id="search_box">
+               <div class="field">
+                  <div class="control">
+                     <input id="coin_search" class="input is-normal" type="text" placeholder="Enter crypto coin to begin.">
+                  </div>
+               </div>
+            </form>
+         </div>
+      </header>
+      <section>
+         <div class="columns">
+         <div class="column ml-5">
+            <h1 class="mb-3 is-size-3">Bitcoin<img class= "coin-symbol" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"></h1>
+            <figure class=" box image is-sqaure">
+               <img src="https://www.investopedia.com/thmb/3W2hqViceXPXsqkVrorWgbIX1Yk=/1828x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/BTC_ALL_graph_coinmarketcap-d9e91016679f4f69a186e0c6cdb23d44.jpg">
+            </figure>
+         </div>
+         <div class="table-container">
+            <table class="column is-size-5  table is-bordered">
+               <thead>
+                  <tr>
+                     <th>Coin</th>
+                     <td>Bitcoin</td>
+                  </tr>
+                  <tr>
+                     <th>Price</th>
+                     <td>$9000</td>
+                  </tr>
+                  <tr>
+                     <th>Price Change</th>
+                     <td>1890</td>
+                  </tr>
+                  <tr>
+                     <th>Volume</th>
+                     <td>39.7B</td>
+                  </tr>
+                  <tr>
+                     <th>Rank</th>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <th>Highest Price</th>
+                     <td>$60000</td>
+                  </tr>
+               </thead>
+               </tfoot>
+            </table>
+            <div class="column is-size-5 mt-5 ml-4">
+            </div>
+            <div class="column">
+            </div>
+         </div>
+         <div class="column box is-5">
+         <div class="column">
+            <h1 class="is-size-3">Info about the coin.</h1>
+         </div>
+         <div class="column mt-auto">
+            <h1>Lorem ipsum dolor Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse soluta perferendis odit mollitia nostrum consequatur, at minima! Neque, amet provident, harum ex ducimus veniam, labore perferendis recusandae nisi tenetur temporibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem eveniet neque illo corporis dignissimos voluptatem placeat nobis ad, quibusdam, consequatur debitis. Cupiditate perferendis dolores temporibus quidem a ullam reprehenderit? sit amet consectetur adipisicing elit. Ipsa quia consequuntur officia, sapiente deserunt doloremque enim, exercitationem excepturi asperiores at possimus consequatur illo ipsam placeat autem sunt error hic vitae!</h1>
+            <a href="">Link</a>
+         </div>
+      </section>
+   </body>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <scrip  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></scrip>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+   <script src="./assets/API_Feed.js"></script>
+   <script src="./assets/script.js"></script>
 </html>
-
