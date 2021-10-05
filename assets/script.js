@@ -1,4 +1,14 @@
 let search_box = $("#coin_search")
+let price = $('#price');
+let coinName = $('#coin');
+let volume = $('#volume');
+let priceChange = $('#price-change');
+let coinRank = $('#rank');
+let highPrice = $('#high-price');
+let CoinNameGraph = $('#coin-name-graph')
+let icon = $('.icon');
+let details = $('#details-coin')
+let link = $('#Link')
 
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
@@ -28,7 +38,15 @@ function loadPage(){
     console.log(myCoinDetails24h.all());
     console.log(myCoinNews.theNews());
 
+
     loadGraph();
+
+
+   
+    //function here to build the graph
+
+    //function here to load the coin info
+      populateTable();
 
     //function here to load the coin details
 
@@ -133,3 +151,15 @@ $("#search_box").on("submit", event => {
     getData("BITCOIN");
 })();
 
+function populateTable(){
+    details.text('')
+    price.text('$' + myCoinDetails.price())  // Coin price for table
+    coinRank.text(myCoinDetails.rank()); // Coin rank for table
+    volume.text(myCoinDetails.volume()); // Share volumes for coin on table
+    priceChange.text(myCoinDetails.change()) // change in price for coin last 24 hours.
+    coinName.text(myCoinDetails.name()) // name of coin for table
+    highPrice.text(myCoinDetails.highest()) // highest record price of coin for table 
+    details.append(myCoinDetails.coinDesc()) // details about the coin. 
+    link.text(myCoinDetails.link()); // Link to coin website in table. 
+    link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
+};
