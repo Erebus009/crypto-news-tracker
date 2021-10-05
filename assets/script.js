@@ -6,7 +6,9 @@ let myCoinNews;
 //--------------------
 
 
-
+//the purpose of this function is to activate the API requests
+//this is called both when the page loads and after user input
+//once all calls are complete will call the function to load the remaining elements
 async function getData(search_coin){
 
     myCoinDetails = await coin(search_coin);

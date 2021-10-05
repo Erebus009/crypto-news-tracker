@@ -20,9 +20,11 @@ const coin = async (coinType, time) => {
     if (time === undefined){
       return ({
         all: () => coinDetails,
+        symbol: () => coinDetails.data.coin.symbol,
         price: () => coinDetails.data.coin.price,
         icon_url: () => coinDetails.data.coin.icon_url,
-        change: () => coinDetails.data.coin.change
+        change: () => coinDetails.data.coin.change,
+        volume: () => coinDetails.data.coin.volume
       });
 
     }else{
