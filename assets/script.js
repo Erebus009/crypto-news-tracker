@@ -92,8 +92,6 @@ function loadGraph(){
             title: {
                 display: true,
                 text: "Pricing for past 24 hours",
-                verticalAlign: "bottom",
-                dockInsidePlotArea: true
             }
         }
       });
