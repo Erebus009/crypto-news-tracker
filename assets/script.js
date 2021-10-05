@@ -7,6 +7,18 @@ let myCoinNews;
 
 
 
+async function loadPage(search_coin){
+
+    myCoinDetails = coin("BITCOIN");
+    myCoinNews = news("BITCOIN");
+
+
+}
+
+
+
+
+
 //this function will take the user unput from the search field and check if the input is a coin we have access too
 //this is done by checking if the input is in the object array in API_Feed.js
 function checkInput(search_item){
@@ -36,17 +48,8 @@ function checkInput(search_item){
         return null;
     }
 
-    //if the entered coin was found, update the global variables with the coin data and news
-    myCoinDetails = coin(search_coin);
-    myCoinNews = news(search_coin);
-
-    //wait 1/2 second to allow API fetches to resolve then log the new details
-    setTimeout(() =>{
-        console.log(myCoinDetails.all());
-        console.log(myCoinNews.theNews());
-        //call to main function to load the site will go here
-    },500);
-    
+    //call main load function to load the page
+    loadPage(search_coin);
 
 }
 
@@ -62,7 +65,6 @@ $("#search_box").on("submit", event => {
 //this will allow something to load on the page right when it loads 
 //the user can later search for another coin if they like
 (function(){
-    myCoinDetails = coin("BITCOIN");
-    myCoinNews = news("BITCOIN");
+    loadPage("BITCOIN")
 })();
 
