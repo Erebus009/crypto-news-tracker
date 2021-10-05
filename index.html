@@ -26,9 +26,9 @@
       <section>
          <div class="columns">
          <div class="column ml-5">
-            <h1 class="mb-3 is-size-3">Bitcoin<img class= "coin-symbol" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"></h1>
+            <h1 class="mb-3 is-size-3" id='coin-name-graph'></h1>
             <figure class=" box image is-sqaure">
-               <img src="https://www.investopedia.com/thmb/3W2hqViceXPXsqkVrorWgbIX1Yk=/1828x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/BTC_ALL_graph_coinmarketcap-d9e91016679f4f69a186e0c6cdb23d44.jpg">
+              
             </figure>
          </div>
          <div class="table-container">
@@ -36,27 +36,31 @@
                <thead>
                   <tr>
                      <th>Coin</th>
-                     <td>Bitcoin</td>
+                     <td id='coin'></td>
                   </tr>
                   <tr>
                      <th>Price</th>
-                     <td>$9000</td>
+                     <td id="price"></td>
                   </tr>
                   <tr>
                      <th>Price Change</th>
-                     <td>1890</td>
+                     <td id="price-change"></td>
                   </tr>
                   <tr>
                      <th>Volume</th>
-                     <td>39.7B</td>
+                     <td id="volume"></td>
                   </tr>
                   <tr>
                      <th>Rank</th>
-                     <td>1</td>
+                     <td id="rank"></td>
                   </tr>
                   <tr>
                      <th>Highest Price</th>
-                     <td>$60000</td>
+                     <td id='high-price'></td>
+                  </tr>
+                  <tr>
+                     <th>Link</th>
+                     <td><a id="Link"></a></td>
                   </tr>
                </thead>
                </tfoot>
@@ -68,8 +72,7 @@
             <h1 class="is-size-3">Info about the coin.</h1>
          </div>
          <div class="column mt-auto">
-            <h1>Lorem ipsum dolor Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse soluta perferendis odit mollitia nostrum consequatur, at minima! Neque, amet provident, harum ex ducimus veniam, labore perferendis recusandae nisi tenetur temporibus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut dolorem eveniet neque illo corporis dignissimos voluptatem placeat nobis ad, quibusdam, consequatur debitis. Cupiditate perferendis dolores temporibus quidem a ullam reprehenderit? sit amet consectetur adipisicing elit. Ipsa quia consequuntur officia, sapiente deserunt doloremque enim, exercitationem excepturi asperiores at possimus consequatur illo ipsam placeat autem sunt error hic vitae!</h1>
-            <a href="">Link</a>
+            <h1 id="details-coin"></h1>
          </div>
       </section>
         <!-- newscards here -->
