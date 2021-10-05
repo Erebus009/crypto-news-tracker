@@ -7,7 +7,7 @@ OKB: 1524, EOS: 5, HEDERA_HASHGRAPH: 63100, ELROND: 72208, AAVE: 74883,  AMP: 77
 LIDO_DAO_TOKEN: 78547, IOTA: 12, CONTENT_VALUE_NETWORK: 11170, KLAYTN: 63279, NEO: 15}
 
 
-const coin = (coinType, time) => {
+const coin = async (coinType, time) => {
 
     let coinAPI = "https://coinranking1.p.rapidapi.com/coin/" + coinLIST[coinType]
     
@@ -15,10 +15,7 @@ const coin = (coinType, time) => {
       coinAPI += "/history/" + time;
     }
 
-    let coinDetails = getCoin(coinAPI);
-    coinDetails.then(data =>{
-      coinDetails = data;
-    });
+    let coinDetails = await getCoin(coinAPI);
 
     if (time === undefined){
       return ({
@@ -66,16 +63,11 @@ async function getCoin(url){
   
 }
 
+const news = async (coinType) => {
 
-const news = (coinType) => {
+  let newsAPI = "https://bing-news-search1.p.rapidapi.com/news/search?q="+ coinType +"&count=1&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
 
-  let newsAPI = "https://bing-news-search1.p.rapidapi.com/news/search?q="+ "bitcoin" +"&count=6&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
-
-
-  let coinNews = getNews(newsAPI);
-      coinNews.then(data =>{
-      coinNews = data;
-  });
+  let coinNews = await getNews(newsAPI);
 
   return ({
       theNews: () => coinNews
@@ -90,7 +82,7 @@ async function getNews(url){
   "headers": {
       "x-bingapis-sdk": "true",
       "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
-      "x-rapidapi-key": "4a5a441082mshcb1b714a2823090p1a255ajsnf13ed5558b31"
+      "x-rapidapi-key": "ecab879069msh3fb5596539644cfp143c34jsnd780de433341"
   }
   })
 
