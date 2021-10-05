@@ -68,6 +68,15 @@ function loadGraph(){
             borderColor: "rgba(0,0,255,0.1)",
             data: dataPoints
           }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Pricing for past 24 hours",
+                verticalAlign: "bottom",
+                dockInsidePlotArea: true
+            }
         }
       });
 
