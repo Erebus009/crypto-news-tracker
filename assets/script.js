@@ -41,7 +41,7 @@ function checkInput(search_item){
     //wait 1/2 second to allow API fetches to resolve then log the new details
     setTimeout(() =>{
         console.log(myCoinDetails.all());
-        console.log(myCoinNews);
+        console.log(myCoinNews.theNews());
         //call to main function to load the site will go here
     },500);
     

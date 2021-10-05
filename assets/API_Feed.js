@@ -78,7 +78,7 @@ const news = (coinType) => {
   });
 
   return ({
-      theNews: coinNews
+      theNews: () => coinNews
   });
 
 }
