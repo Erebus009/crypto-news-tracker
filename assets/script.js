@@ -35,11 +35,11 @@ function loadPage(){
 
     console.log(myCoinDetails.all());
     console.log(myCoinNews.theNews());
-    populateTable();
+   
     //function here to build the graph
 
     //function here to load the coin info
-
+      populateTable();
     //function here to load the coin details
 
     //function here to load the cards
