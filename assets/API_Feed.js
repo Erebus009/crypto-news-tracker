@@ -35,7 +35,15 @@ const coin = async (coinType, time = 0) => {
         icon_url: () => coinDetails.data.coin.iconUrl,
         change: () => coinDetails.data.coin.change,
         volume: () => coinDetails.data.coin.volume,
+
         history: () => coinDetails.data.coin.history
+
+        rank: () => coinDetails.data.coin.rank,
+        highest: () => coinDetails.data.coin.allTimeHigh.price,
+        name: () => coinDetails.data.coin.name,
+        coinDesc:() => coinDetails.data.coin.description,
+        link: () => coinDetails.data.coin.links[0].name,
+
       });
 
     }else{
