@@ -36,7 +36,7 @@ const coin = async (coinType, time = 0) => {
         change: () => coinDetails.data.coin.change,
         volume: () => coinDetails.data.coin.volume,
 
-        history: () => coinDetails.data.coin.history
+        history: () => coinDetails.data.coin.history,
 
         rank: () => coinDetails.data.coin.rank,
         highest: () => coinDetails.data.coin.allTimeHigh.price,
