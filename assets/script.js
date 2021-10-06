@@ -41,10 +41,6 @@ function loadPage(){
 
     loadGraph();
 
-
-   
-    //function here to build the graph
-
     //function here to load the coin info
       populateTable();
 
@@ -54,21 +50,26 @@ function loadPage(){
 
 }
 
+//this function builds and loads the graph showing the price change for the selected coin
+//used data from the var myCoinDetails24h
 function loadGraph(){
 
     let dataPoints = [];
     let timeStamps = [];
     let history = myCoinDetails24h.history();
 
-    $("#coin_name").text(myCoinDetails.name())
 
-    $("#coin_name").parent().children("img").attr("src",myCoinDetails.icon_url())
+    $("#coin_name").text(myCoinDetails.name()) //add name
+    $("#coin_name").parent().children("img").attr("src",myCoinDetails.icon_url()) //add coin symbol
 
+    //build two arrays with the data pulled from the API
+    //this is for the plot points and the x-axis (price and time stamp)
     for(let x = 0; x < history.length; x++){
         timeStamps.push("[" + moment(history[x].timestamp).format("HH:mm")+ "]");
         dataPoints.push(history[x].price)
     }
 
+    //draw the chart on the site
     new Chart("myChart", {
         type: "line",
         
@@ -81,11 +82,19 @@ function loadGraph(){
           labels: timeStamps,
           datasets: [{
             fill: false,
+            markerSize: 1,
             markerType: "none",
-            backgroundColor: "rgba(0,0,255,1.0)",
-            borderColor: "rgba(0,0,255,0.1)",
+            backgroundColor: "#8FA6F7",
+            // borderColor: "rgba(0,0,255,0.1)",
             data: dataPoints
           }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Pricing for past 24 hours",
+            }
         }
       });
 
