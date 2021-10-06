@@ -79,6 +79,11 @@ function loadGraph(){
         dataPoints.push(history[x].price)
     }
 
+    //clear the old graph to make room for the new one
+    $("#myChart").remove()
+    $("#graph_box").append("<canvas id='myChart'><canvas>")
+
+
     //draw the chart on the site
     new Chart("myChart", {
         type: "line",
@@ -164,12 +169,12 @@ $("#search_box").on("submit", event => {
 function populateTable(){
     $('#info-box').removeClass('hide')
     details.text('')
-    price.text('$' + myCoinDetails.price())  // Coin price for table
+    price.text('$' + Number.parseFloat(myCoinDetails.price()).toFixed(2))  // Coin price for table
     coinRank.text(myCoinDetails.rank()); // Coin rank for table
     volume.text(myCoinDetails.volume()); // Share volumes for coin on table
     priceChange.text(myCoinDetails.change()) // change in price for coin last 24 hours.
     coinName.text(myCoinDetails.name()) // name of coin for table
-    highPrice.text(myCoinDetails.highest()) // highest record price of coin for table 
+    highPrice.text('$' + Number.parseFloat(myCoinDetails.highest()).toFixed(2)) // highest record price of coin for table 
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.

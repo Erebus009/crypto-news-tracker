@@ -25,12 +25,12 @@
       </header>
       <!--Coin info starts here-->
       <section>
-         <div class="columns">
+         <div class="columns m-auto">
 
 
           <!-- graph and headers - start -->
 
-          <div class="column ml-5">
+          <div id="graph_box" class="column">
               <div class="columns is-flex">
                   <div id="coin_name" class="column">
                     <h1 class="is-size-3 graph_title"></h1>
@@ -40,7 +40,7 @@
                     <p class="is-size-4 mr-4"></p><span></span>
                   </div> 
               </div>
-              <canvas id="myChart" style="width:100%;max-width:100%"></canvas>
+              <canvas id="myChart"></canvas>
            </div>  
            <!-- graph and headers - end-->
 
@@ -48,8 +48,8 @@
          
            
         
-              <div class="column is-2 is-size-5 wrapper  table is-dashed">
-               <table>
+            <div class="column is-2 is-size-5 wrapper table-container is-flex is-justify-content-center-mobile">
+               <table class="table is-dashed">
                   <thead>
                      <tr>
                         <th>Coin</th>
@@ -90,10 +90,11 @@
 
         </div>
 
-        <div class="column is-4 ">
+      <div class="column is-4 ">
           <button class="accordion" id="coin-info-name"></button>
           <div class="panel">
             <p id=details-coin>Lorem ipsum...</p>
+          </div>
       </div>
       
        
