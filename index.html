@@ -23,10 +23,13 @@
             </form>
          </div>
       </header>
+      <!--Coin info starts here-->
       <section>
          <div class="columns">
 
+
           <!-- graph and headers - start -->
+
           <div class="column ml-5">
               <div class="columns is-flex">
                   <div id="coin_name" class="column">
@@ -41,11 +44,12 @@
            </div>  
            <!-- graph and headers - end-->
 
+
          
-         <div class="column box">
-         <div class="column is-12">
-            <div class="table-container">
-               <table class="column is-size-5 table is-dashed">
+           
+        
+              <div class="column is-2 is-size-5 wrapper  table is-dashed">
+               <table>
                   <thead>
                      <tr>
                         <th>Coin</th>
@@ -76,21 +80,28 @@
                         <td><a id="Link"></a></td>
                      </tr>
                   </thead>
+                  
+                 
                   </tfoot>
-               </table>
-               
-         </div>
-         <article id='info-box' class="message is-dark">
-          <div class="message-header">
-            <p id="coin-info-name"></p>
-            <button class="delete" aria-label="delete"></button>
-          </div>
-          <div class="message-body">
-            <h1 id="details-coin"></h1>
-          </div>
-        </article>
-        
+                </table>
+                
+                
+              
+
+        </div>
+
+        <div class="column is-4 ">
+          <button class="accordion" id="coin-info-name"></button>
+          <div class="panel">
+            <p id=details-coin>Lorem ipsum...</p>
+      </div>
+      
+       
+       
+      </div>
       </section>
+      
+      
         <!-- newscards here -->
      <section>
       
@@ -263,7 +274,7 @@
     </section>
       <!-- newscards end -->
    </body>
-
+  
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
