@@ -61,9 +61,16 @@ function loadGraph(){
     let timeStamps = [];
     let history = myCoinDetails24h.history();
 
+    //add elements above the graph
+    $("#coin_name").children("h1").text(myCoinDetails.name()) //add name
+    $("#coin_name").children("img").attr("src",myCoinDetails.icon_url()) //add coin symbol
+    $("#coin_price").children("p").text("$" + Number.parseFloat(myCoinDetails.price()).toFixed(2))//add price
+    $("#coin_price").children("span").text("(" + myCoinDetails.change() + "%)")//add % change
 
-    $("#coin_name").text(myCoinDetails.name()) //add name
-    $("#coin_name").parent().children("img").attr("src",myCoinDetails.icon_url()) //add coin symbol
+    //chang the color of the % change to highlight if pos or neg change
+    myCoinDetails.change() < 0 ? $("#coin_price").children("span").attr("class","neg_trend") :
+    $("#coin_price").children("span").attr("class","pos_trend");
+    
 
     //build two arrays with the data pulled from the API
     //this is for the plot points and the x-axis (price and time stamp)
