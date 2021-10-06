@@ -25,61 +25,70 @@
       </header>
       <section>
          <div class="columns">
-         <div class="column ml-5">
+         <div class="column is-6 ml-2">
 
             <h1 id="coin_name" class="mb-3 is-size-3"></h1>
               <img class="coin-symbol">
-            <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+            <canvas class="image " id="myChart" style="max-width:1200px; max-height:900px"></canvas>
+               
 
-
          </div>
-         <div class="table-container">
-            <table class="column is-size-5  table is-bordered">
-               <thead>
-                  <tr>
-                     <th>Coin</th>
-                     <td id='coin'></td>
-                  </tr>
-                  <tr>
-                     <th>Price</th>
-                     <td id="price"></td>
-                  </tr>
-                  <tr>
-                     <th>Price Change</th>
-                     <td id="price-change"></td>
-                  </tr>
-                  <tr>
-                     <th>Volume</th>
-                     <td id="volume"></td>
-                  </tr>
-                  <tr>
-                     <th>Rank</th>
-                     <td id="rank"></td>
-                  </tr>
-                  <tr>
-                     <th>Highest Price</th>
-                     <td id='high-price'></td>
-                  </tr>
-                  <tr>
-                     <th>Link</th>
-                     <td><a id="Link"></a></td>
-                  </tr>
-               </thead>
-               </tfoot>
-            </table>
-           
+         
+         <div class="column box">
+         <div class="column is-12">
+            <div class="table-container">
+               <table class="column is-size-5 table is-dashed">
+                  <thead>
+                     <tr>
+                        <th>Coin</th>
+                        <td id='coin'></td>
+                     </tr>
+                     <tr>
+                        <th>Price</th>
+                        <td id="price"></td>
+                     </tr>
+                     <tr>
+                        <th>Price Change</th>
+                        <td id="price-change"></td>
+                     </tr>
+                     <tr>
+                        <th>Volume</th>
+                        <td id="volume"></td>
+                     </tr>
+                     <tr>
+                        <th>Rank</th>
+                        <td id="rank"></td>
+                     </tr>
+                     <tr>
+                        <th>Highest Price</th>
+                        <td id='high-price'></td>
+                     </tr>
+                     <tr>
+                        <th>Link</th>
+                        <td><a id="Link"></a></td>
+                     </tr>
+                  </thead>
+                  </tfoot>
+               </table>
+               
          </div>
-         <div class="column box is-5">
-         <div class="column">
-            <h1 class="is-size-3">Info about the coin.</h1>
-         </div>
-         <div class="column mt-auto">
+         <article id='info-box' class="message is-dark">
+          <div class="message-header">
+            <p id="coin-info-name"></p>
+            <button class="delete" aria-label="delete"></button>
+          </div>
+          <div class="message-body">
             <h1 id="details-coin"></h1>
-         </div>
+          </div>
+        </article>
+        
       </section>
         <!-- newscards here -->
      <section>
-      <div class="columns mx-3 is-flex-direction-row is-flex-wrap-wrap">
+      
+        
+      </div>
+      <div class="columns mx-3 mt-3 is-flex-direction-row is-flex-wrap-wrap">
         <div class="column newscard">
           <div class="card">
             <div class="card-image">
