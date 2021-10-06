@@ -183,7 +183,7 @@ removeBtn.on('click',() =>{
 // news article functions below
 
 function makeNewscards(picture, headline, timestamp, summary, link, source, sourceLogo) {
-    var quantity = myCoinNews.theNews().
+    //var quantity = myCoinNews.theNews().
     var picture = myCoinNews.theNews().value[0].image.thumbnail.contentUrl;
     var headline = myCoinNews.theNews().value[0].name;
     var timestamp = myCoinNews.theNews().value[0].datePublished;
