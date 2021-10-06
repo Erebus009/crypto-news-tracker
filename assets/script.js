@@ -45,12 +45,12 @@ function loadPage(){
     loadGraph();
 
     //function here to load the coin info
-      populateTable();
+    populateTable();
 
     //function here to load the coin details
 
     //function here to load the cards
-    $('#info-box').removeClass('hide')
+    
 }
 
 //this function builds and loads the graph showing the price change for the selected coin
@@ -155,6 +155,7 @@ $("#search_box").on("submit", event => {
 })();
 
 function populateTable(){
+    $('#info-box').removeClass('hide')
     details.text('')
     price.text('$' + myCoinDetails.price())  // Coin price for table
     coinRank.text(myCoinDetails.rank()); // Coin rank for table
