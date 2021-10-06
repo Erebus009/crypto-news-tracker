@@ -25,39 +25,31 @@
       </header>
       <!--Coin info starts here-->
       <section>
-         <div class="columns">
-
-            <div class="column is-6 ml-5">
-
-              <h1 id="coin_name" class="mb-3 is-size-3"></h1>
-                <img class="coin-symbol">
-              <canvas class="image " id="myChart" style="max-width:1200px; max-height:400px"></canvas>
-            
-            </div>
-         
-         
+         <div class="columns m-auto">
 
 
-          <div class="column ml-5">
+          <!-- graph and headers - start -->
+
+          <div id="graph_box" class="column">
               <div class="columns is-flex">
                   <div id="coin_name" class="column">
                     <h1 class="is-size-3 graph_title"></h1>
                     <img class="coin-symbol">
                   </div>  
-                  <div id="coin_price" class="is-flex is-align-items-center">
-                    <p class="is-size-4 mr-3"></p><span></span>
+                  <div id="coin_price" class="column is-flex is-justify-content-flex-end">
+                    <p class="is-size-4 mr-4"></p><span></span>
                   </div> 
               </div>
-              <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+              <canvas id="myChart"></canvas>
            </div>  
-
+           <!-- graph and headers - end-->
 
 
          
            
         
-              <div class="column is-2 is-size-5 wrapper  table is-dashed">
-               <table>
+            <div class="column is-2 is-size-5 wrapper table-container is-flex is-justify-content-center-mobile">
+               <table class="table is-dashed">
                   <thead>
                      <tr>
                         <th>Coin</th>
@@ -98,10 +90,11 @@
 
         </div>
 
-        <div class="column is-4 ">
+      <div class="column is-4 ">
           <button class="accordion" id="coin-info-name"></button>
           <div class="panel">
             <p id=details-coin>Lorem ipsum...</p>
+          </div>
       </div>
       
        
