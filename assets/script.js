@@ -29,7 +29,7 @@ async function getData(search_coin){
     myCoinDetails = await coin(search_coin);
     myCoinDetails24h = await coin(search_coin, "24h")
     myCoinNews = await news(search_coin); 
-    storeCoinInStorage(search_coin)
+    localStorage.setItem('coin', JSON.stringify(search_coin));
     loadPage();
 
 }
@@ -165,8 +165,11 @@ $("#search_box").on("submit", event => {
 //will also load the last viewed coin if the user returns
 (function(){
     //add if statement here about if a local key exists and load that instead of the default
-    let coin = 'BITCOIN'
-    if (localStorage.value != 'BITCOIN'){
+    let coin = JSON.parse(localStorage.getItem('coin'))
+    
+    if (coin == undefined){
+        
+        coin = 'BITCOIN';
         
     }
 
@@ -218,16 +221,17 @@ for (i = 0; i < acc.length; i++) {
 
 
 
-function storeCoinInStorage(coin){
+
+    
+   
+    
+    
+   
     
 
     
-    localStorage.setItem('coin', JSON.stringify(coin));
-    let coins = localStorage.getItem('coin')
-
-    console.log(coins);
 
 
 
-}
+
 
