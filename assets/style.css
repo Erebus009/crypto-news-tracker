@@ -28,3 +28,13 @@
     color: red;
     font-size: 1.5rem;
 }
+
+/* Adds scroll to coin details */
+#details-coin {
+overflow: auto;
+height: 150px;
+}
+.hide{
+    display: none;
+}
+
