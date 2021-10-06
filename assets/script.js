@@ -50,7 +50,7 @@ function loadPage(){
     //function here to load the coin details
 
     //function here to load the cards
-    
+    makeNewscards();
 }
 
 //this function builds and loads the graph showing the price change for the selected coin
@@ -178,5 +178,31 @@ removeBtn.on('click',() =>{
 
 
 
+
+
+// news article functions below
+
+function makeNewscards(picture, headline, timestamp, summary, link, source, sourceLogo) {
+    var quantity = myCoinNews.theNews().
+    var picture = myCoinNews.theNews().value[0].image.thumbnail.contentUrl;
+    var headline = myCoinNews.theNews().value[0].name;
+    var timestamp = myCoinNews.theNews().value[0].datePublished;
+    var summary = myCoinNews.theNews().value[0].description;
+    var link = myCoinNews.theNews().value[0].url;
+    var source = myCoinNews.theNews().value[0].provider[0].name;
+    var sourceLogo = myCoinNews.theNews().value[0].provider[0].image.thumbnail.contentUrl;
+    
+    console.log(picture, headline, timestamp, summary, link, source, sourceLogo);
+
+    // create cards
+
+    // need to determine number of stories actually returned
+
+    // need for loop to grab 6 articles
+
+    // need to stop card production if there are less than 6 stories
+
+    // need to 
+}
 
 
