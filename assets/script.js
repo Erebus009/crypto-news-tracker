@@ -9,6 +9,9 @@ let CoinNameGraph = $('#coin-name-graph')
 let icon = $('.icon');
 let details = $('#details-coin')
 let link = $('#Link')
+let removeBtn = $('.delete')
+let coinInfo = $('#coin-info-name')
+
 
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
@@ -47,7 +50,7 @@ function loadPage(){
     //function here to load the coin details
 
     //function here to load the cards
-
+    $('#info-box').removeClass('hide')
 }
 
 //this function builds and loads the graph showing the price change for the selected coin
@@ -162,4 +165,17 @@ function populateTable(){
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
+    coinInfo.text(myCoinDetails.name() + ' Info')
 };
+
+
+removeBtn.on('click',() =>{
+    $('#info-box').addClass('hide')
+
+});
+
+
+
+
+
+

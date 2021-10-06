@@ -18,3 +18,11 @@
 #coin_name{
     display: inline-block;
 }
+/* Adds scroll to coin details */
+#details-coin {
+overflow: auto;
+height: 150px;
+}
+.hide{
+    display: none;
+}
