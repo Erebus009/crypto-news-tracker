@@ -15,9 +15,20 @@
     margin-left: 5px;
 }
 
-#coin_name{
+.graph_title{
     display: inline-block;
 }
+
+.pos_trend{
+    color: green;
+    font-size: 1.5rem;
+}
+
+.neg_trend{
+    color: red;
+    font-size: 1.5rem;
+}
+
 /* Adds scroll to coin details */
 #details-coin {
 overflow: auto;
@@ -26,3 +37,4 @@ height: 150px;
 .hide{
     display: none;
 }
+
