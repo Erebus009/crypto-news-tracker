@@ -11,7 +11,7 @@ let details = $('#details-coin')
 let link = $('#Link')
 let removeBtn = $('.delete')
 let coinInfo = $('#coin-info-name')
-
+let lastCoin = [];
 
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
@@ -29,7 +29,7 @@ async function getData(search_coin){
     myCoinDetails = await coin(search_coin);
     myCoinDetails24h = await coin(search_coin, "24h")
     myCoinNews = await news(search_coin); 
-
+    storeCoinInStorage(search_coin)
     loadPage();
 
 }
@@ -46,6 +46,8 @@ function loadPage(){
 
     //function here to load the coin info
     populateTable();
+    //fucntion to load previous coin searched.
+    
 
     //function here to load the coin details
 
@@ -163,7 +165,12 @@ $("#search_box").on("submit", event => {
 //will also load the last viewed coin if the user returns
 (function(){
     //add if statement here about if a local key exists and load that instead of the default
-    getData("BITCOIN");
+    let coin = 'BITCOIN'
+    if (localStorage.value != 'BITCOIN'){
+        
+    }
+
+    getData(coin);
 })();
 
 function populateTable(){
@@ -208,4 +215,19 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
+
+
+
+function storeCoinInStorage(coin){
+    
+
+    
+    localStorage.setItem('coin', JSON.stringify(coin));
+    let coins = localStorage.getItem('coin')
+
+    console.log(coins);
+
+
+
+}
 
