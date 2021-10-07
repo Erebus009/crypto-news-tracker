@@ -1,9 +1,10 @@
 # Crypto News Tracker. 
 <h2></h2>
 <ul>
-<li>Team members consisted of Mike  (https://github.com/tehshaw)</li>
+  <h2>Project Members.</h2>
+<li> Mike  (https://github.com/tehshaw)</li>
 <li> Josh  (https://github.com/helovedus1st)</li>
-<li> and Travis (https://github.com/Erebus009)</li>
+<li> Travis (https://github.com/Erebus009)</li>
 <h2></h2>
 <ul>
 
@@ -13,7 +14,8 @@ Languages used: <img src="https://img.icons8.com/color/40/000000/javascript--v1.
 <h3>The project idea consisted of using Coin Base API and Bing News API to display info to the user with the current market stats of searched coin with corresponding current news articles of said coin to allow the user a quick an easy interface for digesting information to aide in trading cryptocurrency of choice.</h3>
 <h2></h2>
 
-![image](https://user-images.githubusercontent.com/12164234/136433836-fe738cd4-1c17-4e5a-85c5-7672d0fde117.png)
+![image](https://user-images.githubusercontent.com/12164234/136453859-d0a68a5b-a302-4113-ae6a-163684925e63.png)
+
 
 <br>
 
