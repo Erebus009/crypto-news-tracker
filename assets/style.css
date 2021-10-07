@@ -1,5 +1,17 @@
+:root{
+    --color_A: #56585E;
+    --color_B: #8BA2E3;
+    --color_C: #CCD1DF;
+    --color_D: #3A435E;
+    --color_E: #9BA0AB;
+}
+
 * {
     box-sizing: border-box;
+  }
+
+  h1{
+      text-decoration: underline;
   }
 
 .image-news img {
@@ -38,12 +50,13 @@
 overflow: auto;
 height: 350px;
 }
+
 .hide{
     display: none;
 }
 
 .accordion {
-    background-color: rgb(211, 211, 211);
+    background-color: var(--color_A);
     color: rgb(0, 0, 0);
     cursor: pointer;
     padding: 10px;
@@ -52,10 +65,11 @@ height: 350px;
     border: none;
     outline: none;
     transition: 0.4s;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
     font-size: 1em;
-    
+    text-align: center;
+ 
     
   }
   
@@ -74,5 +88,36 @@ height: 350px;
     
   }
   
+  .color_B{
+      background-color: var(--color_B);
+  }
+
+  .color_C{
+      background-color: var(--color_C);
+  }
+
+  .color_D{
+      background-color: var(--color_D);
+  }
+
+  .color_E{
+      background-color: var(--color_E);
+  }
+
+#coin_search{
+    position: relative;
+}
   
 
+#myChart{
+    border-top: var(--color_E) solid 2px;
+}
+
+.help{
+    position: absolute;
+    top: -35px;
+    background-color: red;
+    border-radius: 15px;
+    color: var(--color_B);
+    padding: 5px;
+}

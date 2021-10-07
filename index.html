@@ -9,7 +9,7 @@
       <title>Crypto News</title>
    </head>
    <body>
-      <header class="section">
+      <header class="section color_B">
          <div class="columns is-vcentered">
             <div class="column is-8">
                <h1 class="is-size-1">Crypto News Tracker</h1>
@@ -17,7 +17,7 @@
             <form class="column" id="search_box">
                <div class="field">
                   <div class="control">
-                     <input id="coin_search" class="input is-normal" type="text" placeholder="Enter crypto coin to begin.">
+                     <input id="coin_search" class="input is-info is-rounded" type="text" placeholder="Enter crypto coin to begin.">
                   </div>
                </div>
             </form>
@@ -25,82 +25,70 @@
       </header>
       <!--Coin info starts here-->
       <section>
-         <div class="columns m-auto is-flex-wrap-wrap">
-
+         <div class="columns m-auto is-centered">
+          <div  class="column is-half-desktop is-full-tablet">
           <!-- graph and headers - start -->
-          <div id="graph_box" class="column is-half-desktop is-full-tablet">
-            <div class="columns is-flex">
-                <div id="coin_name" class="column">
-                  <h1 class="is-size-3 graph_title"></h1>
-                  <img class="coin-symbol">
-                </div>  
-                <div id="coin_price" class="column is-flex is-justify-content-flex-end">
-                  <p class="is-size-4 mr-4"></p><span></span>
-                </div> 
-            </div>
-            <canvas id="myChart"></canvas>
-          </div>  
+            <div id="graph_box">
+              <div class="columns">
+                  <div id="coin_name" class="column">
+                    <h1 class="is-size-3 graph_title"></h1>
+                    <img class="coin-symbol">
+                  </div>  
+                  <div id="coin_price" class="column is-flex is-justify-content-flex-end">
+                    <p class="is-size-4 mr-4"></p><span></span>
+                  </div> 
+              </div>
+              <canvas id="myChart"></canvas>
+            </div>  
           <!-- graph and headers - end-->
             
           <!-- coin details section -start -->
-          <div class="column is-one-quarter-desktop is-half-tablet is-size-5 table-container ">
-                <table class="table is-dashed">
+          <div class="table-container has-text-centered">
+                <table class="table is-dashed  is-flex is-justify-content-center color_C">
                     <thead>
                       <tr>
                           <th>Coin</th>
-                          <td id='coin'></td>
-                      </tr>
-                      <tr>
                           <th>Price</th>
-                          <td id="price"></td>
-                      </tr>
-                      <tr>
                           <th>Price Change</th>
-                          <td id="price-change"></td>
-                      </tr>
-                      <tr>
                           <th>Volume</th>
-                          <td id="volume"></td>
-                      </tr>
-                      <tr>
                           <th>Rank</th>
-                          <td id="rank"></td>
-                      </tr>
-                      <tr>
                           <th>Highest Price</th>
-                          <td id='high-price'></td>
+                          <th>Link</th>
+                          
                       </tr>
                       <tr>
-                          <th>Link</th>
+                          <td id='coin' class="is-selected"></td>
+                          <td id="price"></td>
+                          <td id="price-change"></td>
+                          <td id="volume"></td>
+                          <td id="rank"></td>
+                          <td id='high-price'></td>
                           <td><a id="Link"></a></td>
                       </tr>
+
                     </thead>
                     
                   
                     </tfoot>
                   </table>
-                  
-                  
-                
-
           </div>
           <!-- coin details section -end -->
 
           <!-- coin info accordion - start -->
-          <div class="column is-one-quarter-desktop is-half-tablet">
-              <button class="accordion" id="coin-info-name"></button>
+          <div class="is-half-desktop is-half-tablet">
+              <button class="accordion is-rounded" id="coin-info-name"></button>
               <div class="panel">
                 <p id=details-coin></p>
               </div>
           </div>
           <!-- coin info accordion - end -->
-
+        </div>
         </div>
       </section>
       
       
         <!-- newscards here -->
-     <section>
+     <section class="color_E">
       
         
       </div>
@@ -272,7 +260,7 @@
       <!-- newscards end -->
    </body>
   
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <scrip  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></scrip>

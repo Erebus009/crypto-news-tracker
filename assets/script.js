@@ -107,10 +107,29 @@ function loadGraph(){
           }]
         },
         options: {
-            legend: {display: false},
-            title: {
-                display: true,
-                text: "Pricing for past 24 hours",
+            scales: {
+                x:{
+                    title: {
+                        display: true,
+                        text: "Locale Time"
+                    }
+                }
+            },
+
+            plugins: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: "Pricing for past 24 hours",
+                    backgroundColor: "#CCD1DF",
+
+                },
+                tooltip: {
+                    intersect: false,
+                    yAlign: "bottom",
+                    titleAlign: "center"
+                }
+
             }
         }
       });
@@ -134,11 +153,11 @@ function checkInput(search_item){
         //if this check fails it will highlight the search box red
         $(search_box).attr("class","input is-danger");
         //show a text hint that the search was unsuccessfull
-        $(search_box).parent().prepend("<p class='help is-danger temp'>Unable to find coin</p>")
+        $(search_box).parent().prepend("<p class='help temp'>Unable to find coin</p>")
 
         //after 3 seconds revert the input box back to normal state and remove the text hint
         setTimeout(() =>{
-            $(search_box).attr("class","input is-normal");
+            $(search_box).attr("class","input is-info is-rounded");
             $("p").remove(".temp");
         },3000);
 
@@ -181,8 +200,8 @@ function populateTable(){
     details.text('')
     price.text('$' + Number.parseFloat(myCoinDetails.price()).toFixed(2))  // Coin price for table
     coinRank.text(myCoinDetails.rank()); // Coin rank for table
-    volume.text(myCoinDetails.volume()); // Share volumes for coin on table
-    priceChange.text(myCoinDetails.change()) // change in price for coin last 24 hours.
+    volume.text(myCoinDetails.volume().toLocaleString("en-US")); // Share volumes for coin on table
+    priceChange.text(myCoinDetails.change() + "%") // change in price for coin last 24 hours.
     coinName.text(myCoinDetails.name()) // name of coin for table
     highPrice.text('$' + Number.parseFloat(myCoinDetails.highest()).toFixed(2)) // highest record price of coin for table 
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
