@@ -182,27 +182,80 @@ removeBtn.on('click',() =>{
 
 // news article functions below
 
-function makeNewscards(picture, headline, timestamp, summary, link, source, sourceLogo) {
-    //var quantity = myCoinNews.theNews().
-    var picture = myCoinNews.theNews().value[0].image.thumbnail.contentUrl;
-    var headline = myCoinNews.theNews().value[0].name;
-    var timestamp = myCoinNews.theNews().value[0].datePublished;
-    var summary = myCoinNews.theNews().value[0].description;
-    var link = myCoinNews.theNews().value[0].url;
-    var source = myCoinNews.theNews().value[0].provider[0].name;
-    var sourceLogo = myCoinNews.theNews().value[0].provider[0].image.thumbnail.contentUrl;
-    
-    console.log(picture, headline, timestamp, summary, link, source, sourceLogo);
+function makeNewscards() {
 
-    // create cards
+    //clear articles from previous search
+    $("#cards-div").empty();
 
-    // need to determine number of stories actually returned
+    // create variable for number of stories found to be used in for loop
+    var stories = myCoinNews.theNews().value;
+    console.log(stories);
+    var storiesCount = stories.length;
+    console.log(storiesCount);
 
-    // need for loop to grab 6 articles
 
-    // need to stop card production if there are less than 6 stories
+    // use for loop to create an object with data pairs to send to newscard string
 
-    // need to 
+    for(var i = 0; i < storiesCount; i++){
+        var story = {
+            headline: myCoinNews.theNews().value[i].name,
+            timestamp: myCoinNews.theNews().value[i].datePublished,
+            summary: myCoinNews.theNews().value[i].description,
+            link: myCoinNews.theNews().value[i].url,
+            source: myCoinNews.theNews().value[i].provider[0].name,
+            sourceLogo: myCoinNews.theNews().value[i].provider[0].image.thumbnail.contentUrl         
+        };
+
+        // need to separate out picture variable because some articles have no associated image
+        var picture = myCoinNews.theNews().value[i].image
+
+            // insert a placeholder image when no image is found
+            if (picture === undefined) {
+                picture = "https://bulma.io/images/placeholders/1280x960.png"
+            } else {
+                picture = myCoinNews.theNews().value[i].image.thumbnail.contentUrl
+
+                // must remove string at the end of picture url to bring back full-size image (instead of thumbnail)
+                let index = picture.search("&")
+                picture = picture.slice(0,index)
+            }
+            console.log(picture);
+
+        // set variable to add cards to correct area of html
+        var cardsDiv = document.querySelector('#cards-div');
+
+        // creates a string that can be updated with data from for loop to create each newscard
+        var newscard = `
+        <div class="column newscard">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-16by9 image-news">
+                <a href="${story.link}"><img src=${picture} alt="default news story image" target="_blank"></a>
+              </figure>
+            </div>
+            <div class="card-content columns is-multiline">
+                <div class="column is-full media-content">
+                  <p class="title is-4">${story.headline}</p>
+                </div> 
+                <div class="column is-one-quarter media">                    
+                    <figure class="image is-48x48">
+                      <img src="${story.sourceLogo}" alt="news source logo">
+                    </figure>
+                </div>
+                <div class="column is-three-quarters">
+                  <p class="subtitle is-6 pt-3 pl-1"><small>${story.source}<br/>${story.timestamp}</small></p>
+                </div>
+                <div class="column is-full content">
+                  <p>${story.summary} . . .</p>
+                  <a href="${story.link}" target="_blank">Read the full article here.</a>
+                </div>
+            </div>
+          </div>
+        </div>
+        `
+        // add each newscard on the page
+        cardsDiv.innerHTML += newscard;
+    }
 }
 
 
