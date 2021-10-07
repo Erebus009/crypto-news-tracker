@@ -297,7 +297,7 @@ function makeNewscards() {
 
             // insert a placeholder image when no image is found
             if (picture === undefined) {
-                picture = "https://bulma.io/images/placeholders/1280x960.png"
+                picture = "coin-news-placeholder-image.png"
             } else {
                 picture = myCoinNews.theNews().value[i].image.thumbnail.contentUrl
 
