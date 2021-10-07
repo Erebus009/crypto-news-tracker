@@ -13,6 +13,7 @@ let removeBtn = $('.delete')
 let coinInfo = $('#coin-info-name')
 let lastCoin = [];
 let symbol = $('#symbol')
+let firstSeen = $('#First')
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
 let myCoinDetails24h;
@@ -188,8 +189,9 @@ function populateTable(){
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
-    coinInfo.text(myCoinDetails.name() + ' Info')
-    symbol.text(myCoinDetails.symbol());
+    coinInfo.text(myCoinDetails.name() + ' Info') // for text box info 
+    symbol.text(myCoinDetails.symbol()); // Symbol of coin example being BTC for bitcoin.
+    firstSeen.text(myCoinDetails.timestampCoin())
 };
 
 
@@ -211,13 +213,20 @@ for (let i = 0; i < acc.length; i++) {
   });
 }
 
-function newCards(){
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+  }
+   
 
-
-
-
-
-}
 
 
 
