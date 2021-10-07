@@ -38,12 +38,12 @@
 
 .pos_trend{
     color: green;
-    font-size: 1.5rem;
+
 }
 
 .neg_trend{
     color: red;
-    font-size: 1.5rem;
+
 }
 
 /* Adds scroll to coin details */
@@ -125,3 +125,21 @@ height: 350px;
     color: var(--color_B);
     padding: 5px;
 }
+
+.marquee {
+    overflow: hidden;
+    border:1px solid #ccc;
+  }
+
+  li{
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+  }
+
+  li img{
+      margin-right: 5px;
+  }
+  li span{
+      margin-left: 5px;
+  }

@@ -17,8 +17,48 @@ let symbol = $('#symbol')
 let myCoinDetails;
 let myCoinDetails24h;
 let myCoinNews;
+let allCoins;
 //--------------------
 
+async function coinMarquee() {
+
+    allCoins =  await getCoin("https://coinranking1.p.rapidapi.com/coins/")
+
+    for(let x = 0; x < allCoins.data.coins.length; x++){
+        let $mainDIV = $("<li>");
+        $mainDIV.attr("coin",allCoins.data.coins[x].name )
+
+        let $coinIcon = $("<img>")
+        $coinIcon.attr({
+            src: allCoins.data.coins[x].iconUrl,
+            width: "15px",
+            height: "15px"
+        })
+        
+        
+        $mainDIV.text("  " +allCoins.data.coins[x].name + " " +
+        Number.parseFloat(allCoins.data.coins[x].price).toLocaleString("en-US",{style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2})
+        )
+
+        let $changeSpan = $("<span>")
+        $changeSpan.text(" (" + allCoins.data.coins[x].change + ")")
+        allCoins.data.coins[x].change < 0 ? $($changeSpan ).attr("class","neg_trend") :
+        $($changeSpan).attr("class","pos_trend");
+
+
+
+        $mainDIV.prepend($coinIcon)
+        $mainDIV.append($changeSpan)
+
+        $("#webTicker").append($mainDIV)
+    }
+
+    $('#webTicker').webTicker({
+        duplicate: true,
+        startEmpty: true
+    });
+
+}
 
 //the purpose of this function is to activate the API requests
 //this is called both when the page loads and after user input
@@ -36,11 +76,6 @@ async function getData(search_coin){
 
 //this is the primary function to load the elements of the page
 function loadPage(){
-
-    console.log(myCoinDetails.all());
-    console.log(myCoinDetails24h.all());
-    console.log(myCoinNews.theNews());
-
 
     loadGraph();
 
@@ -165,6 +200,7 @@ function checkInput(search_item){
         return null;
     }
 
+    $(search_box).val("");
     //call main load function to load the page
     getData(search_coin);
 
@@ -183,6 +219,7 @@ $("#search_box").on("submit", event => {
 //the user can later search for another coin if they like
 //will also load the last viewed coin if the user returns
 (function(){
+    coinMarquee();
     //add if statement here about if a local key exists and load that instead of the default
     let coin = JSON.parse(localStorage.getItem('coin'))
     
@@ -202,7 +239,7 @@ function populateTable(){
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
-    coinInfo.text(myCoinDetails.name() + ' Info')
+    coinInfo.text(myCoinDetails.name() + ' Info');
     symbol.text(myCoinDetails.symbol());
 };
 
@@ -216,20 +253,9 @@ document.querySelector(".accordion").addEventListener("click", function() {
 });
 
 
-function newCards(){
 
-
-
-
-
-}
-
-
-
-    
    
-    
-    
+
    
     
 
