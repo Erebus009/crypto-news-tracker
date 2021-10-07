@@ -18,8 +18,48 @@ let firstSeen = $('#First')
 let myCoinDetails;
 let myCoinDetails24h;
 let myCoinNews;
+let allCoins;
 //--------------------
 
+async function coinMarquee() {
+
+    allCoins =  await getCoin("https://coinranking1.p.rapidapi.com/coins/")
+
+    for(let x = 0; x < allCoins.data.coins.length; x++){
+        let $mainDIV = $("<li>");
+        $mainDIV.attr("coin",allCoins.data.coins[x].name )
+
+        let $coinIcon = $("<img>")
+        $coinIcon.attr({
+            src: allCoins.data.coins[x].iconUrl,
+            width: "15px",
+            height: "15px"
+        })
+        
+        
+        $mainDIV.text("  " +allCoins.data.coins[x].name + " " +
+        Number.parseFloat(allCoins.data.coins[x].price).toLocaleString("en-US",{style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2})
+        )
+
+        let $changeSpan = $("<span>")
+        $changeSpan.text(" (" + allCoins.data.coins[x].change + ")")
+        allCoins.data.coins[x].change < 0 ? $($changeSpan ).attr("class","neg_trend") :
+        $($changeSpan).attr("class","pos_trend");
+
+
+
+        $mainDIV.prepend($coinIcon)
+        $mainDIV.append($changeSpan)
+
+        $("#webTicker").append($mainDIV)
+    }
+
+    $('#webTicker').webTicker({
+        duplicate: true,
+        startEmpty: true
+    });
+
+}
 
 //the purpose of this function is to activate the API requests
 //this is called both when the page loads and after user input
@@ -37,11 +77,6 @@ async function getData(search_coin){
 
 //this is the primary function to load the elements of the page
 function loadPage(){
-
-    console.log(myCoinDetails.all());
-    console.log(myCoinDetails24h.all());
-    console.log(myCoinNews.theNews());
-
 
     loadGraph();
 
@@ -67,7 +102,7 @@ function loadGraph(){
     //add elements above the graph
     $("#coin_name").children("h1").text(myCoinDetails.name()) //add name
     $("#coin_name").children("img").attr("src",myCoinDetails.icon_url()) //add coin symbol
-    $("#coin_price").children("p").text("$" + Number.parseFloat(myCoinDetails.price()).toFixed(2))//add price
+    $("#coin_price").children("p").text(Number.parseFloat(myCoinDetails.price()).toLocaleString("en-US",{style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2}))//add price
     $("#coin_price").children("span").text("(" + myCoinDetails.change() + "%)")//add % change
 
     //chang the color of the % change to highlight if pos or neg change
@@ -108,10 +143,29 @@ function loadGraph(){
           }]
         },
         options: {
-            legend: {display: false},
-            title: {
-                display: true,
-                text: "Pricing for past 24 hours",
+            scales: {
+                x:{
+                    title: {
+                        display: true,
+                        text: "Locale Time"
+                    }
+                }
+            },
+
+            plugins: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: "Pricing for past 24 hours",
+                    backgroundColor: "#CCD1DF",
+
+                },
+                tooltip: {
+                    intersect: false,
+                    yAlign: "bottom",
+                    titleAlign: "center"
+                }
+
             }
         }
       });
@@ -135,11 +189,11 @@ function checkInput(search_item){
         //if this check fails it will highlight the search box red
         $(search_box).attr("class","input is-danger");
         //show a text hint that the search was unsuccessfull
-        $(search_box).parent().prepend("<p class='help is-danger temp'>Unable to find coin</p>")
+        $(search_box).parent().prepend("<p class='help temp'>Unable to find coin</p>")
 
         //after 3 seconds revert the input box back to normal state and remove the text hint
         setTimeout(() =>{
-            $(search_box).attr("class","input is-normal");
+            $(search_box).attr("class","input is-info is-rounded");
             $("p").remove(".temp");
         },3000);
 
@@ -147,6 +201,7 @@ function checkInput(search_item){
         return null;
     }
 
+    $(search_box).val("");
     //call main load function to load the page
     getData(search_coin);
 
@@ -165,27 +220,23 @@ $("#search_box").on("submit", event => {
 //the user can later search for another coin if they like
 //will also load the last viewed coin if the user returns
 (function(){
+    coinMarquee();
     //add if statement here about if a local key exists and load that instead of the default
     let coin = JSON.parse(localStorage.getItem('coin'))
     
-    if (coin == undefined){
-        
-        coin = 'BITCOIN';
-        
-    }
+    coin == undefined ? getData('BITCOIN') : getData(coin);
 
-    getData(coin);
 })();
 
 function populateTable(){
     $('#info-box').removeClass('hide')
     details.text('')
-    price.text('$' + Number.parseFloat(myCoinDetails.price()).toFixed(2))  // Coin price for table
+    price.text(Number.parseFloat(myCoinDetails.price()).toLocaleString("en-US",{style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2}))  // Coin price for table
     coinRank.text(myCoinDetails.rank()); // Coin rank for table
-    volume.text(myCoinDetails.volume()); // Share volumes for coin on table
-    priceChange.text(myCoinDetails.change()) // change in price for coin last 24 hours.
+    volume.text(myCoinDetails.volume().toLocaleString("en-US")); // Share volumes for coin on table
+    priceChange.text(myCoinDetails.change() + "%") // change in price for coin last 24 hours.
     coinName.text(myCoinDetails.name()) // name of coin for table
-    highPrice.text('$' + Number.parseFloat(myCoinDetails.highest()).toFixed(2)) // highest record price of coin for table 
+    highPrice.text(Number.parseFloat(myCoinDetails.highest()).toLocaleString("en-US",{style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2})) // highest record price of coin for table 
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
@@ -195,23 +246,6 @@ function populateTable(){
 };
 
 
-var acc = document.getElementsByClassName("accordion");
-    
-for (let i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
 
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp);
@@ -226,22 +260,11 @@ function timeConverter(UNIX_timestamp){
     return time;
   }
    
+document.querySelector(".accordion").addEventListener("click", function() {
+    var panel = this.nextElementSibling;
+    panel.style.display === "block" ?  panel.style.display = "none" : panel.style.display = "block";
 
-
-
-
-    
-   
-    
-    
-   
-    
-
-    
-
-
-
-
+});
 
 // news article functions below
 
