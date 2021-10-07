@@ -279,6 +279,10 @@ document.querySelector(".accordion").addEventListener("click", function() {
 
 // news article functions below
 
+
+
+// news articles function below
+
 function makeNewscards() {
 
     //clear articles from previous search
@@ -292,13 +296,17 @@ function makeNewscards() {
     // use for loop to create an object with data pairs to send to newscard string
 
     for(var i = 0; i < storiesCount; i++){
+
+        // convert provided datePublished data to usable date and time
+        var convertedDate = new Date(myCoinNews.theNews().value[i].datePublished).toLocaleString("en-US");
+
+        
         var story = {
             headline: myCoinNews.theNews().value[i].name,
-            timestamp: myCoinNews.theNews().value[i].datePublished,
+            timestamp: convertedDate,
             summary: myCoinNews.theNews().value[i].description,
             link: myCoinNews.theNews().value[i].url,
-            source: myCoinNews.theNews().value[i].provider[0].name,
-            sourceLogo: myCoinNews.theNews().value[i].provider[0].image.thumbnail.contentUrl         
+            source: myCoinNews.theNews().value[i].provider[0].name,    
         };
 
         // need to separate out picture variable because some articles have no associated image
@@ -315,6 +323,16 @@ function makeNewscards() {
                 picture = picture.slice(0,index)
             }
 
+        // need to separate out sourceLogo variable because some sources have no associated image
+        var sourceLogo = myCoinNews.theNews().value[i].provider[0].image
+
+            // insert a placeholder image when no image is found
+            if (sourceLogo === undefined) {
+                sourceLogo = "sourceLogo-placeholder-image.png"
+            } else {
+                sourceLogo = myCoinNews.theNews().value[i].provider[0].image.thumbnail.contentUrl
+            }
+
         // set variable to add cards to correct area of html
         var cardsDiv = document.querySelector('#cards-div');
 
@@ -324,7 +342,7 @@ function makeNewscards() {
           <div class="card">
             <div class="card-image">
               <figure class="image is-16by9 image-news">
-                <a href="${story.link}"><img src=${picture} alt="default news story image" target="_blank"></a>
+                <a href="${story.link}" target="_blank"><img src=${picture} alt="default news story image"></a>
               </figure>
             </div>
             <div class="card-content columns is-multiline">
@@ -333,7 +351,7 @@ function makeNewscards() {
                 </div> 
                 <div class="column is-one-quarter media">                    
                     <figure class="image is-48x48">
-                      <img src="${story.sourceLogo}" alt="news source logo">
+                      <img src="${sourceLogo}" alt="news source logo">
                     </figure>
                 </div>
                 <div class="column is-three-quarters">
