@@ -186,13 +186,8 @@ $("#search_box").on("submit", event => {
     //add if statement here about if a local key exists and load that instead of the default
     let coin = JSON.parse(localStorage.getItem('coin'))
     
-    if (coin == undefined){
-        
-        coin = 'BITCOIN';
-        
-    }
+    coin == undefined ? getData('BITCOIN') : getData(coin);
 
-    getData(coin);
 })();
 
 function populateTable(){
@@ -212,23 +207,14 @@ function populateTable(){
 };
 
 
-var acc = document.getElementsByClassName("accordion");
-    
-for (let i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
 
-    /* Toggle between hiding and showing the active panel */
+document.querySelector(".accordion").addEventListener("click", function() {
+
     var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
+    panel.style.display === "block" ?  panel.style.display = "none" : panel.style.display = "block";
+
+});
+
 
 function newCards(){
 
