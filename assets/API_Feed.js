@@ -88,7 +88,7 @@ async function getCoin(url){
 
 const news = async (coinType) => {
 
-  let newsAPI = "https://bing-news-search1.p.rapidapi.com/news/search?q="+ coinType +"&count=6&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
+  let newsAPI = "https://bing-news-search1.p.rapidapi.com/news/search?q="+ coinType + "+coin" + "&count=6&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
 
   let coinNews = await getNews(newsAPI);
 
