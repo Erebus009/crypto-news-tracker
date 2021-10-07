@@ -1,4 +1,4 @@
-const coinLIST = {BITCOIN: 1, ETHEREUM: 2, HEX: 5331, TETHER: 8, Cardano: 9, BINANCE_COIN: 14, SOLANA: 68905, 
+const coinLIST = {BITCOIN: 1, ETHEREUM: 2, HEX: 5331, TETHER: 8, CARDANO: 9, BINANCE_COIN: 14, SOLANA: 68905, 
 TERRA: 62458, XRP: 3, POLKADOT: 71983, DOGECOIN: 20, USDC: 1760, USDC: 72821, AVALANCHE: 70974, BINANCE: 14066, CHAINLINK: 59,
 LITECOIN: 7, ALGORAND: 14585, BITCOIN_CASH: 4, WRAPPED_BTC: 10607, COSMOS: 4966, POLYGON: 12606, AXIE_INFINITY: 76192,
 INTERNET_COMPUTER: 73728, PANCAKESWAP: 73268, VECHAIN: 19, TEZOS: 18, FTX_TOKEN: 62569, SHIBA_INU: 72724,
@@ -41,6 +41,9 @@ const coin = async (coinType, time = 0) => {
         name: () => coinDetails.data.coin.name,
         coinDesc:() => coinDetails.data.coin.description,
         link: () => coinDetails.data.coin.links[0].name,
+        symbol: () => coinDetails.data.coin.symbol,
+        timestampCoin: () => timeConverter(coinDetails.data.coin.firstSeen)
+        
 
       });
 

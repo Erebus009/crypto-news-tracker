@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    
+  }
+ 
 .image-news img {
     width: 100%;
     height: 100%;
@@ -15,14 +20,67 @@
     margin-left: 5px;
 }
 
-#coin_name{
+.graph_title{
     display: inline-block;
 }
+
+.pos_trend{
+    color: green;
+    font-size: 1.5rem;
+}
+
+.neg_trend{
+    color: red;
+    font-size: 1.5rem;
+}
+
 /* Adds scroll to coin details */
 #details-coin {
 overflow: auto;
-height: 150px;
+height: 350px;
 }
 .hide{
     display: none;
 }
+
+.accordion {
+    background-color: rgb(211, 211, 211);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 1em;
+    
+    
+    
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color: rgb(167, 165, 165);
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    padding: 0 18px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    display: none;
+
+    overflow: auto;
+    
+    
+  }
+ .section{
+     background-color: rgb(27, 26, 26);
+     color: white;
+     
+ }
+ 
+

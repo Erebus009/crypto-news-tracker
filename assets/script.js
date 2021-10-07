@@ -11,8 +11,9 @@ let details = $('#details-coin')
 let link = $('#Link')
 let removeBtn = $('.delete')
 let coinInfo = $('#coin-info-name')
-
-
+let lastCoin = [];
+let symbol = $('#symbol')
+let firstSeen = $('#First')
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
 let myCoinDetails24h;
@@ -29,7 +30,7 @@ async function getData(search_coin){
     myCoinDetails = await coin(search_coin);
     myCoinDetails24h = await coin(search_coin, "24h")
     myCoinNews = await news(search_coin); 
-
+    localStorage.setItem('coin', JSON.stringify(search_coin));
     loadPage();
 
 }
@@ -46,6 +47,8 @@ function loadPage(){
 
     //function here to load the coin info
     populateTable();
+    //fucntion to load previous coin searched.
+    
 
     //function here to load the coin details
 
@@ -61,9 +64,16 @@ function loadGraph(){
     let timeStamps = [];
     let history = myCoinDetails24h.history();
 
+    //add elements above the graph
+    $("#coin_name").children("h1").text(myCoinDetails.name()) //add name
+    $("#coin_name").children("img").attr("src",myCoinDetails.icon_url()) //add coin symbol
+    $("#coin_price").children("p").text("$" + Number.parseFloat(myCoinDetails.price()).toFixed(2))//add price
+    $("#coin_price").children("span").text("(" + myCoinDetails.change() + "%)")//add % change
 
-    $("#coin_name").text(myCoinDetails.name()) //add name
-    $("#coin_name").parent().children("img").attr("src",myCoinDetails.icon_url()) //add coin symbol
+    //chang the color of the % change to highlight if pos or neg change
+    myCoinDetails.change() < 0 ? $("#coin_price").children("span").attr("class","neg_trend") :
+    $("#coin_price").children("span").attr("class","pos_trend");
+    
 
     //build two arrays with the data pulled from the API
     //this is for the plot points and the x-axis (price and time stamp)
@@ -71,6 +81,11 @@ function loadGraph(){
         timeStamps.push("[" + moment(history[x].timestamp).format("HH:mm")+ "]");
         dataPoints.push(history[x].price)
     }
+
+    //clear the old graph to make room for the new one
+    $("#myChart").remove()
+    $("#graph_box").append("<canvas id='myChart'><canvas>")
+
 
     //draw the chart on the site
     new Chart("myChart", {
@@ -151,30 +166,78 @@ $("#search_box").on("submit", event => {
 //will also load the last viewed coin if the user returns
 (function(){
     //add if statement here about if a local key exists and load that instead of the default
-    getData("BITCOIN");
+    let coin = JSON.parse(localStorage.getItem('coin'))
+    
+    if (coin == undefined){
+        
+        coin = 'BITCOIN';
+        
+    }
+
+    getData(coin);
 })();
 
 function populateTable(){
     $('#info-box').removeClass('hide')
     details.text('')
-    price.text('$' + myCoinDetails.price())  // Coin price for table
+    price.text('$' + Number.parseFloat(myCoinDetails.price()).toFixed(2))  // Coin price for table
     coinRank.text(myCoinDetails.rank()); // Coin rank for table
     volume.text(myCoinDetails.volume()); // Share volumes for coin on table
     priceChange.text(myCoinDetails.change()) // change in price for coin last 24 hours.
     coinName.text(myCoinDetails.name()) // name of coin for table
-    highPrice.text(myCoinDetails.highest()) // highest record price of coin for table 
+    highPrice.text('$' + Number.parseFloat(myCoinDetails.highest()).toFixed(2)) // highest record price of coin for table 
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
-    coinInfo.text(myCoinDetails.name() + ' Info')
+    coinInfo.text(myCoinDetails.name() + ' Info') // for text box info 
+    symbol.text(myCoinDetails.symbol()); // Symbol of coin example being BTC for bitcoin.
+    firstSeen.text(myCoinDetails.timestampCoin())
 };
 
 
-removeBtn.on('click',() =>{
-    $('#info-box').addClass('hide')
+var acc = document.getElementsByClassName("accordion");
+    
+for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
 
-});
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
 
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+  }
+   
+
+
+
+
+    
+   
+    
+    
+   
+    
+
+    
 
 
 

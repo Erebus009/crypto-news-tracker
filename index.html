@@ -12,7 +12,7 @@
       <header class="section">
          <div class="columns is-vcentered">
             <div class="column is-8">
-               <h1 class="is-size-1">Crypto News Tracker</h1>
+               <h1 class="is-size-1">Crypto New Tracker</h1>
             </div>
             <form class="column" id="search_box">
                <div class="field">
@@ -23,7 +23,9 @@
             </form>
          </div>
       </header>
+      <!--Coin info starts here-->
       <section>
+
          <div class="columns">
           <div class="column is-6 ml-2">
 
@@ -67,31 +69,94 @@
                   </thead>
                   </tfoot>
                 </table>               
-              </div>
-                <article id='info-box' class="message is-dark">
-                  <div class="message-header">
-                    <p id="coin-info-name"></p>
-                    <button class="delete" aria-label="delete"></button>
-                  </div>
-                  <div class="message-body">
-                    <h1 id="details-coin"></h1>
-                  </div>
-                </article>
-              </div>
+
+         <div class="columns m-auto is-flex-wrap-wrap">
+
+          <!-- graph and headers - start -->
+          <div id="graph_box" class="column is-half-desktop is-full-tablet">
+            <div class="columns is-flex">
+                <div id="coin_name" class="column">
+                  <h1 class="is-size-3 graph_title"></h1>
+                  <img class="coin-symbol">
+                </div>  
+                <div id="coin_price" class="column is-flex is-justify-content-flex-end">
+                  <p class="is-size-4 mr-4"></p><span></span>
+                </div> 
             </div>
+            <canvas id="myChart"></canvas>
+          </div>  
+          <!-- graph and headers - end-->
+            
+          <!-- coin details section -start -->
+          <div class="column is-one-quarter-desktop is-half-tablet is-size-5 table-container box ">
+                <table class="table is-dashed">
+                    <thead>
+                      <tr>
+                          <th>Coin</th>
+                          <td id='coin'></td>
+                      </tr>
+                      <tr>
+                          <th>Price</th>
+                          <td id="price"></td>
+                      </tr>
+                      <tr>
+                          <th>Price Change</th>
+                          <td id="price-change"></td>
+                      </tr>
+                      <tr>
+                          <th>Volume</th>
+                          <td id="volume"></td>
+                      </tr>
+                      <tr>
+                          <th>Rank</th>
+                          <td id="rank"></td>
+                      </tr>
+                      <tr>
+                          <th>Highest Price</th>
+                          <td id='high-price'></td>
+                      </tr>
+                      <tr>
+                          <th>Link</th>
+                          <td><a id="Link"></a></td>
+                      </tr>
+                      
+                    </thead>
+                    
+                  
+                    </tfoot>
+                  </table>
+                  
+                  
+                
+
           </div>
+          <!-- coin details section -end -->
 
+          <!-- coin info accordion - start -->
+          <div class="column is-one-quarter-desktop is-half-tablet">
+              <button class="accordion" id="coin-info-name"></button>
+              <div class="panel">
+                <p id=details-coin></p>
+              </div>
+          </div>
+          <!-- coin info accordion - end -->
+
+        </div>
       </section>
-
+      
+      
         <!-- newscards here -->
-
-    <section>      
+        
+            <section>      
       <div id='cards-div' class="columns mx-3 mt-3 is-flex-direction-row is-flex-wrap-wrap is-centered">
       </div>
     </section>
       <!-- newscards end -->
    </body>
+    
 
+
+  
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
