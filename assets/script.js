@@ -21,6 +21,10 @@ let myCoinNews;
 let allCoins;
 //--------------------
 
+
+//get details for and start the marquee at the stop of the coin details section
+// https://maze.digital/webticker/
+//js is manually added to the file as assets/websticker.min.js, is not an SDN link
 async function coinMarquee() {
 
     allCoins =  await getCoin("https://coinranking1.p.rapidapi.com/coins/")
@@ -56,7 +60,8 @@ async function coinMarquee() {
 
     $('#webTicker').webTicker({
         duplicate: true,
-        startEmpty: true
+        startEmpty: false
+
     });
 
 }
@@ -78,21 +83,22 @@ async function getData(search_coin){
 //this is the primary function to load the elements of the page
 function loadPage(){
 
+    //build and load main graph on the page
     loadGraph();
 
-    //function here to load the coin info
+    //fill in all coin details under the graph
     populateTable();
-    //fucntion to load previous coin searched.
-    
-
-    //function here to load the coin details
-
-    //function here to load the cards
+ 
+    //create and load news cards below coin details
     makeNewscards();
+
+    //build and load the marquee at the top of the coin section
+    coinMarquee();
 }
 
 //this function builds and loads the graph showing the price change for the selected coin
 //used data from the var myCoinDetails24h
+//https://www.chartjs.org/docs/latest/ for docs and changes
 function loadGraph(){
 
     let dataPoints = [];
@@ -126,6 +132,7 @@ function loadGraph(){
     new Chart("myChart", {
         type: "line",
         
+        
         title: {
             text: "Pricing for the last 24 hours",
             dockInsidePlotArea: true
@@ -138,11 +145,14 @@ function loadGraph(){
             markerSize: 1,
             markerType: "none",
             backgroundColor: "#8FA6F7",
-            // borderColor: "rgba(0,0,255,0.1)",
             data: dataPoints
           }]
         },
         options: {
+            interaction: {
+                mode: 'index'
+            },
+            
             scales: {
                 x:{
                     title: {
@@ -153,6 +163,7 @@ function loadGraph(){
             },
 
             plugins: {
+                
                 legend: {display: false},
                 title: {
                     display: true,
@@ -220,7 +231,7 @@ $("#search_box").on("submit", event => {
 //the user can later search for another coin if they like
 //will also load the last viewed coin if the user returns
 (function(){
-    coinMarquee();
+    
     //add if statement here about if a local key exists and load that instead of the default
     let coin = JSON.parse(localStorage.getItem('coin'))
     
@@ -275,9 +286,7 @@ function makeNewscards() {
 
     // create variable for number of stories found to be used in for loop
     var stories = myCoinNews.theNews().value;
-    console.log(stories);
     var storiesCount = stories.length;
-    console.log(storiesCount);
 
 
     // use for loop to create an object with data pairs to send to newscard string
@@ -305,7 +314,6 @@ function makeNewscards() {
                 let index = picture.search("&")
                 picture = picture.slice(0,index)
             }
-            console.log(picture);
 
         // set variable to add cards to correct area of html
         var cardsDiv = document.querySelector('#cards-div');

@@ -1,7 +1,7 @@
 :root{
     --color_A: #56585E;
     --color_B: #8BA2E3;
-    --color_C: #CCD1DF;
+    --color_C: #D3E5F5;
     --color_D: #3A435E;
     --color_E: #9BA0AB;
 }
@@ -9,6 +9,10 @@
 * {
     box-sizing: border-box;
     
+  }
+
+  body{
+      background-color: var(--color_C);
   }
 
   h1{
@@ -143,4 +147,8 @@ height: 350px;
   }
   li span{
       margin-left: 5px;
+  }
+
+  #ticker{
+      background-color: var(--color_C);
   }
