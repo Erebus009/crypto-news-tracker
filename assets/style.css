@@ -1,9 +1,9 @@
 :root{
-    --color_A: #56585E;
-    --color_B: #8BA2E3;
-    --color_C: #D3E5F5;
-    --color_D: #3A435E;
-    --color_E: #9BA0AB;
+    --color_A: #f5eeee;
+    --color_B: #d0d7dd;
+    --color_C: #ffffff;
+    --color_D: #cec5c5;
+    --color_E: #c4c0c0;
 }
 
 * {
@@ -13,6 +13,7 @@
 
   body{
       background-color: var(--color_C);
+   
   }
 
   h1{

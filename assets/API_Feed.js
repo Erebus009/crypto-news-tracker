@@ -88,7 +88,7 @@ async function getCoin(url){
 
 const news = async (coinType) => {
 
-  let newsAPI = "https://bing-news-search1.p.rapidapi.com/news/search?q="+ coinType +"&count=6&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
+  let newsAPI = "https://bing-news-search1.p.rapidapi.com/news/search?q="+ coinType + "+crypto" + "&count=6&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
 
   let coinNews = await getNews(newsAPI);
 
@@ -106,7 +106,7 @@ async function getNews(url){
     "headers": {
         "x-bingapis-sdk": "true",
         "x-rapidapi-host": "bing-news-search1.p.rapidapi.com",
-        "x-rapidapi-key": "ecab879069msh3fb5596539644cfp143c34jsnd780de433341"
+        "x-rapidapi-key": "50e2e462f8msh7a5c1f25c65202ep1015a0jsn0a57f58b48d8"
     }
   })
     if(!response.ok){

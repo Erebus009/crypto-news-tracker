@@ -285,7 +285,7 @@ function makeNewscards() {
     $("#cards-div").empty();
 
     // create variable for number of stories found to be used in for loop
-    var stories = myCoinNews.theNews().value;
+    var stories = myCoinNews.theNews().value ;
     var storiesCount = stories.length;
 
 
