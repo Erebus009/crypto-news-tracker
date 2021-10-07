@@ -126,10 +126,6 @@ height: 350px;
     padding: 5px;
 }
 
-.marquee {
-    overflow: hidden;
-    border:1px solid #ccc;
-  }
 
   li{
     font-size: 13px;
