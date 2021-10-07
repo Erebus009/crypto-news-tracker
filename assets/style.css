@@ -99,6 +99,11 @@ height: 350px;
   .color_C{
       background-color: var(--color_C);
   }
+ .section{
+     background-color: var(--color_B);
+     
+ }
+ 
 
   .color_D{
       background-color: var(--color_D);

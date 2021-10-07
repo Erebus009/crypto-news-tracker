@@ -42,6 +42,8 @@ const coin = async (coinType, time = 0) => {
         coinDesc:() => coinDetails.data.coin.description,
         link: () => coinDetails.data.coin.links[0].name,
         symbol: () => coinDetails.data.coin.symbol,
+        timestampCoin: () => timeConverter(coinDetails.data.coin.firstSeen)
+        
 
       });
 
@@ -86,7 +88,7 @@ async function getCoin(url){
 
 const news = async (coinType) => {
 
-  let newsAPI = ""//"https://bing-news-search1.p.rapidapi.com/news/search?q="+ coinType +"&count=1&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
+  let newsAPI = "https://bing-news-search1.p.rapidapi.com/news/search?q="+ coinType +"&count=6&mkt=en-US&freshness=Day&textFormat=Raw&safeSearch=Off";
 
   let coinNews = await getNews(newsAPI);
 

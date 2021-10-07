@@ -13,6 +13,7 @@ let removeBtn = $('.delete')
 let coinInfo = $('#coin-info-name')
 let lastCoin = [];
 let symbol = $('#symbol')
+let firstSeen = $('#First')
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
 let myCoinDetails24h;
@@ -87,7 +88,7 @@ function loadPage(){
     //function here to load the coin details
 
     //function here to load the cards
-    
+    makeNewscards();
 }
 
 //this function builds and loads the graph showing the price change for the selected coin
@@ -239,29 +240,108 @@ function populateTable(){
     details.append(myCoinDetails.coinDesc()) // details about the coin. 
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
-    coinInfo.text(myCoinDetails.name() + ' Info');
-    symbol.text(myCoinDetails.symbol());
+    coinInfo.text(myCoinDetails.name() + ' Info') // for text box info 
+    symbol.text(myCoinDetails.symbol()); // Symbol of coin example being BTC for bitcoin.
+    firstSeen.text(myCoinDetails.timestampCoin())
 };
 
 
 
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+  }
+   
 document.querySelector(".accordion").addEventListener("click", function() {
-
     var panel = this.nextElementSibling;
     panel.style.display === "block" ?  panel.style.display = "none" : panel.style.display = "block";
 
 });
 
+// news article functions below
+
+function makeNewscards() {
+
+    //clear articles from previous search
+    $("#cards-div").empty();
+
+    // create variable for number of stories found to be used in for loop
+    var stories = myCoinNews.theNews().value;
+    console.log(stories);
+    var storiesCount = stories.length;
+    console.log(storiesCount);
 
 
-   
+    // use for loop to create an object with data pairs to send to newscard string
 
-   
-    
+    for(var i = 0; i < storiesCount; i++){
+        var story = {
+            headline: myCoinNews.theNews().value[i].name,
+            timestamp: myCoinNews.theNews().value[i].datePublished,
+            summary: myCoinNews.theNews().value[i].description,
+            link: myCoinNews.theNews().value[i].url,
+            source: myCoinNews.theNews().value[i].provider[0].name,
+            sourceLogo: myCoinNews.theNews().value[i].provider[0].image.thumbnail.contentUrl         
+        };
 
-    
+        // need to separate out picture variable because some articles have no associated image
+        var picture = myCoinNews.theNews().value[i].image
 
+            // insert a placeholder image when no image is found
+            if (picture === undefined) {
+                picture = "https://bulma.io/images/placeholders/1280x960.png"
+            } else {
+                picture = myCoinNews.theNews().value[i].image.thumbnail.contentUrl
 
+                // must remove string at the end of picture url to bring back full-size image (instead of thumbnail)
+                let index = picture.search("&")
+                picture = picture.slice(0,index)
+            }
+            console.log(picture);
 
+        // set variable to add cards to correct area of html
+        var cardsDiv = document.querySelector('#cards-div');
+
+        // creates a string that can be updated with data from for loop to create each newscard
+        var newscard = `
+        <div class="column newscard">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-16by9 image-news">
+                <a href="${story.link}"><img src=${picture} alt="default news story image" target="_blank"></a>
+              </figure>
+            </div>
+            <div class="card-content columns is-multiline">
+                <div class="column is-full media-content">
+                  <p class="title is-4">${story.headline}</p>
+                </div> 
+                <div class="column is-one-quarter media">                    
+                    <figure class="image is-48x48">
+                      <img src="${story.sourceLogo}" alt="news source logo">
+                    </figure>
+                </div>
+                <div class="column is-three-quarters">
+                  <p class="subtitle is-6 pt-3 pl-1"><small>${story.source}<br/>${story.timestamp}</small></p>
+                </div>
+                <div class="column is-full content">
+                  <p>${story.summary} . . .</p>
+                  <a href="${story.link}" target="_blank">Read the full article here.</a>
+                </div>
+            </div>
+          </div>
+        </div>
+        `
+        // add each newscard on the page
+        cardsDiv.innerHTML += newscard;
+    }
+}
 
 
