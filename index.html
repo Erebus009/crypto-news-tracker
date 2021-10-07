@@ -25,6 +25,51 @@
       </header>
       <!--Coin info starts here-->
       <section>
+
+         <div class="columns">
+          <div class="column is-6 ml-2">
+
+            <h1 id="coin_name" class="mb-3 is-size-3"></h1>
+              <img class="coin-symbol">
+            <canvas class="image " id="myChart" style="max-width:1200px; max-height:900px"></canvas>
+          </div>         
+          <div class="column box">
+            <div class="column is-12">
+              <div class="table-container">
+                <table class="column is-size-5 table is-dashed">
+                  <thead>
+                     <tr>
+                        <th>Coin</th>
+                        <td id='coin'></td>
+                     </tr>
+                     <tr>
+                        <th>Price</th>
+                        <td id="price"></td>
+                     </tr>
+                     <tr>
+                        <th>Price Change</th>
+                        <td id="price-change"></td>
+                     </tr>
+                     <tr>
+                        <th>Volume</th>
+                        <td id="volume"></td>
+                     </tr>
+                     <tr>
+                        <th>Rank</th>
+                        <td id="rank"></td>
+                     </tr>
+                     <tr>
+                        <th>Highest Price</th>
+                        <td id='high-price'></td>
+                     </tr>
+                     <tr>
+                        <th>Link</th>
+                        <td><a id="Link"></a></td>
+                     </tr>
+                  </thead>
+                  </tfoot>
+                </table>               
+
          <div class="columns m-auto is-flex-wrap-wrap">
 
           <!-- graph and headers - start -->
@@ -101,177 +146,16 @@
       
       
         <!-- newscards here -->
-     <section>
-      
         
-      </div>
-      <div class="columns mx-3 mt-3 is-flex-direction-row is-flex-wrap-wrap">
-        <div class="column newscard">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 image-news">
-                <img
-                  src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="default news story image"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">This is the news story headline, which may be fairly lengthy and contain a pretty long string of words.</p>
-                  <p class="subtitle is-6 pt-1"><small>10/5/2021 12:40PM</small></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper, enim non tempor volutpat, metus urna pulvinar dolor, sed lacinia urna tortor eu neque. Ut et tempor lorem. Sed cursus congue vestibulum. Nulla luctus lacinia porta. Sed eleifend mauris vel lacus gravida, faucibus blandit mauris tempus. Morbi egestas eget leo at aliquam. Sed vitae turpis enim. Aenean vulputate ultricies ornare. Sed nec sem molestie lorem pretium elementum. Integer molestie dui eros, sodales ullamcorper sapien sodales non.
-                <br/>
-                <br/>
-                <a href="#">Click here for the original article.</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column newscard">
-            <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 image-news">
-                <img
-                  src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="default news story image"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">This is the news story headline, which may be fairly lengthy and contain a pretty long string of words.</p>
-                  <p class="subtitle is-6 pt-1"><small>10/5/2021 12:40PM</small></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper, enim non tempor volutpat, metus urna pulvinar dolor, sed lacinia urna tortor eu neque. Ut et tempor lorem. Sed cursus congue vestibulum.
-                <br/>
-                <br/>
-                <a href="#">Click here for the original article.</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column newscard">
-            <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 image-news">
-                <img
-                  src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="default news story image"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">This is the news story headline, which may be fairly lengthy and contain a pretty long string of words.</p>
-                  <p class="subtitle is-6 pt-1"><small>10/5/2021 12:40PM</small></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper, enim non tempor volutpat, metus urna pulvinar dolor, sed lacinia urna tortor eu neque. Ut et tempor lorem. Sed cursus congue vestibulum. Nulla luctus lacinia porta. Sed eleifend mauris vel lacus gravida, faucibus blandit mauris tempus. Morbi egestas eget leo at aliquam. Sed vitae turpis enim. Aenean vulputate ultricies ornare. Sed nec sem molestie lorem pretium elementum.
-                <br/>
-                <br/>
-                <a href="#">Click here for the original article.</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column newscard">
-            <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 image-news">
-                <img
-                  src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="default news story image"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">This is the news story headline, which may be fairly lengthy and contain a pretty long string of words.</p>
-                  <p class="subtitle is-6 pt-1"><small>10/5/2021 12:40PM</small></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper, enim non tempor volutpat, metus urna pulvinar dolor, sed lacinia urna tortor eu neque. Ut et tempor lorem. Sed cursus congue vestibulum. Nulla luctus lacinia porta. Sed eleifend mauris vel lacus gravida, faucibus blandit mauris tempus. Morbi egestas eget leo at aliquam. Sed vitae turpis enim. Aenean vulputate ultricies ornare. Sed nec sem molestie lorem pretium elementum. Integer molestie dui eros, sodales ullamcorper sapien sodales non.
-                <br/>
-                <br/>
-                <a href="#">Click here for the original article.</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column newscard">
-            <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 image-news">
-                <img
-                  src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="default news story image"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">This is the news story headline, which may be fairly lengthy and contain a pretty long string of words.</p>
-                  <p class="subtitle is-6 pt-1"><small>10/5/2021 12:40PM</small></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper, enim non tempor volutpat, metus urna pulvinar dolor, sed lacinia urna tortor eu neque. Ut et tempor lorem. Sed cursus congue vestibulum. Nulla luctus lacinia porta.
-                <br/>
-                <br/>
-                <a href="#">Click here for the original article.</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column newscard">
-            <div class="card">
-            <div class="card-image">
-              <figure class="image is-16by9 image-news">
-                <img
-                  src="https://bulma.io/images/placeholders/1280x960.png"
-                  alt="default news story image"
-                />
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title is-4">This is the news story headline, which may be fairly lengthy and contain a pretty long string of words.</p>
-                  <p class="subtitle is-6 pt-1"><small>10/5/2021 12:40PM</small></p>
-                </div>
-              </div>
-
-              <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper, enim non tempor volutpat, metus urna pulvinar dolor, sed lacinia urna tortor eu neque.
-                <br/>
-                <br/>
-                <a href="#">Click here for the original article.</a>
-              </div>
-            </div>
-          </div>
-        </div>
+            <section>      
+      <div id='cards-div' class="columns mx-3 mt-3 is-flex-direction-row is-flex-wrap-wrap is-centered">
       </div>
     </section>
       <!-- newscards end -->
    </body>
+    
+
+
   
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
