@@ -112,11 +112,6 @@ height: 350px;
     position: relative;
 }
   
- .section{
-     background-color: rgb(27, 26, 26);
-     color: white;
-     
- }
 
 #myChart{
     border-top: var(--color_E) solid 2px;
