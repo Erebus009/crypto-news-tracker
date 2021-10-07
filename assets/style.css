@@ -1,7 +1,8 @@
 * {
     box-sizing: border-box;
+    
   }
-
+ 
 .image-news img {
     width: 100%;
     height: 100%;
@@ -57,11 +58,12 @@ height: 350px;
     font-size: 1em;
     
     
+    
   }
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
   .active, .accordion:hover {
-    background-color: #ccc;
+    background-color: rgb(167, 165, 165);
   }
   
   /* Style the accordion panel. Note: hidden by default */
@@ -70,9 +72,14 @@ height: 350px;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     display: none;
+
+    overflow: auto;
     
     
   }
-  
-  
+ .section{
+     background-color: rgb(27, 26, 26);
+     color: white;
+     
+ }
 

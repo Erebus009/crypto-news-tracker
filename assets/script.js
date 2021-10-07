@@ -12,7 +12,7 @@ let link = $('#Link')
 let removeBtn = $('.delete')
 let coinInfo = $('#coin-info-name')
 let lastCoin = [];
-
+let symbol = $('#symbol')
 //these will be where all the data is stored when the site loads or a search is generated
 let myCoinDetails;
 let myCoinDetails24h;
@@ -189,6 +189,7 @@ function populateTable(){
     link.text(myCoinDetails.link()); // Link to coin website in table. 
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
     coinInfo.text(myCoinDetails.name() + ' Info')
+    symbol.text(myCoinDetails.symbol());
 };
 
 
@@ -210,7 +211,13 @@ for (let i = 0; i < acc.length; i++) {
   });
 }
 
+function newCards(){
 
+
+
+
+
+}
 
 
 

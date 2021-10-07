@@ -41,6 +41,7 @@ const coin = async (coinType, time = 0) => {
         name: () => coinDetails.data.coin.name,
         coinDesc:() => coinDetails.data.coin.description,
         link: () => coinDetails.data.coin.links[0].name,
+        symbol: () => coinDetails.data.coin.symbol,
 
       });
 
