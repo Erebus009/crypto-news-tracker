@@ -1,9 +1,10 @@
 # Crypto News Tracker. 
 <h2></h2>
 <ul>
-<li>Team members consisted of Mike  (https://github.com/tehshaw)</li>
+  <h2>Project Members.</h2>
+<li> Mike  (https://github.com/tehshaw)</li>
 <li> Josh  (https://github.com/helovedus1st)</li>
-<li> and Travis (https://github.com/Erebus009)</li>
+<li> Travis (https://github.com/Erebus009)</li>
 <h2></h2>
 <ul>
 
