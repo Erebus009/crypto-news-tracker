@@ -32,6 +32,7 @@ async function coinMarquee() {
     for(let x = 0; x < allCoins.data.coins.length; x++){
         let $mainDIV = $("<li>");
         $mainDIV.attr("coin",allCoins.data.coins[x].name )
+        x == allCoins.data.coins.length -1 ? $mainDIV.addClass("last") : console.log();
 
         let $coinIcon = $("<img>")
         $coinIcon.attr({
@@ -46,7 +47,7 @@ async function coinMarquee() {
         )
 
         let $changeSpan = $("<span>")
-        $changeSpan.text(" (" + allCoins.data.coins[x].change + ")")
+        $changeSpan.text(" (" + allCoins.data.coins[x].change + "%)")
         allCoins.data.coins[x].change < 0 ? $($changeSpan ).attr("class","neg_trend") :
         $($changeSpan).attr("class","pos_trend");
 
