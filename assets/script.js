@@ -27,8 +27,10 @@ let allCoins;
 //js is manually added to the file as assets/websticker.min.js, is not an SDN link
 async function coinMarquee() {
 
+    //grab all the coins from the API
     allCoins =  await getCoin("https://coinranking1.p.rapidapi.com/coins/")
 
+    //for each coin, build an <li> element to append to the UL that the marquee scripts will animate
     for(let x = 0; x < allCoins.data.coins.length; x++){
         let $mainDIV = $("<li>");
         $mainDIV.attr("coin",allCoins.data.coins[x].name )
@@ -46,7 +48,7 @@ async function coinMarquee() {
         )
 
         let $changeSpan = $("<span>")
-        $changeSpan.text(" (" + allCoins.data.coins[x].change + ")")
+        $changeSpan.text(" (" + allCoins.data.coins[x].change + "%)")
         allCoins.data.coins[x].change < 0 ? $($changeSpan ).attr("class","neg_trend") :
         $($changeSpan).attr("class","pos_trend");
 
@@ -198,7 +200,7 @@ function checkInput(search_item){
     //check to see if the coin matches one in the array
     if(!(search_coin in coinLIST)){
         //if this check fails it will highlight the search box red
-        $(search_box).attr("class","input is-danger");
+        $(search_box).attr("class","input is-danger is-rounded");
         //show a text hint that the search was unsuccessfull
         $(search_box).parent().prepend("<p class='help temp'>Unable to find coin</p>")
 
@@ -232,7 +234,6 @@ $("#search_box").on("submit", event => {
 //will also load the last viewed coin if the user returns
 (function(){
     
-    //add if statement here about if a local key exists and load that instead of the default
     let coin = JSON.parse(localStorage.getItem('coin'))
     
     coin == undefined ? getData('BITCOIN') : getData(coin);
@@ -253,32 +254,14 @@ function populateTable(){
     link.attr('href', 'https://' + myCoinDetails.link()) // makes link clickable in table.
     coinInfo.text(myCoinDetails.name() + ' Info') // for text box info 
     symbol.text(myCoinDetails.symbol()); // Symbol of coin example being BTC for bitcoin.
-    firstSeen.text(myCoinDetails.timestampCoin())
 };
 
-
-
-function timeConverter(UNIX_timestamp){
-    var a = new Date(UNIX_timestamp);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var year = a.getFullYear();
-    var month = months[a.getMonth()];
-    var date = a.getDate();
-    var hour = a.getHours();
-    var min = a.getMinutes();
-    var sec = a.getSeconds();
-    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
-    return time;
-  }
-   
+  
 document.querySelector(".accordion").addEventListener("click", function() {
     var panel = this.nextElementSibling;
     panel.style.display === "block" ?  panel.style.display = "none" : panel.style.display = "block";
 
 });
-
-// news article functions below
-
 
 
 // news articles function below
