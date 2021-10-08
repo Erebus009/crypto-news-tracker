@@ -34,6 +34,14 @@
   border-radius: 15px
   }
 
+.bg-img {
+    
+    background-image: url(./images/mesh-graphic-fading.png) ;
+    background-position: center center;
+    background-repeat:  no-repeat;
+    background-size:  cover;
+}
+
 .image-news img {
     width: 100%;
     height: 100%;
