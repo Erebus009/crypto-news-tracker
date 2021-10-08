@@ -34,6 +34,7 @@ async function coinMarquee() {
     for(let x = 0; x < allCoins.data.coins.length; x++){
         let $mainDIV = $("<li>");
         $mainDIV.attr("coin",allCoins.data.coins[x].name )
+        x == allCoins.data.coins.length -1 ? $mainDIV.addClass("last") : console.log();
 
         let $coinIcon = $("<img>")
         $coinIcon.attr({
@@ -114,8 +115,8 @@ function loadGraph(){
     $("#coin_price").children("span").text("(" + myCoinDetails.change() + "%)")//add % change
 
     //chang the color of the % change to highlight if pos or neg change
-    myCoinDetails.change() < 0 ? $("#coin_price").children("span").attr("class","neg_trend") :
-    $("#coin_price").children("span").attr("class","pos_trend");
+    myCoinDetails.change() < 0 ? $("#coin_price").children("span").attr("class","neg_trend is-size-4") :
+    $("#coin_price").children("span").attr("class","pos_trend is-size-4");
     
 
     //build two arrays with the data pulled from the API
@@ -256,7 +257,6 @@ function populateTable(){
     symbol.text(myCoinDetails.symbol()); // Symbol of coin example being BTC for bitcoin.
 };
 
-  
 document.querySelector(".accordion").addEventListener("click", function() {
     var panel = this.nextElementSibling;
     panel.style.display === "block" ?  panel.style.display = "none" : panel.style.display = "block";
