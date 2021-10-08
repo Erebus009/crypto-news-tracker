@@ -27,8 +27,10 @@ let allCoins;
 //js is manually added to the file as assets/websticker.min.js, is not an SDN link
 async function coinMarquee() {
 
+    //grab all the coins from the API
     allCoins =  await getCoin("https://coinranking1.p.rapidapi.com/coins/")
 
+    //for each coin, build an <li> element to append to the UL that the marquee scripts will animate
     for(let x = 0; x < allCoins.data.coins.length; x++){
         let $mainDIV = $("<li>");
         $mainDIV.attr("coin",allCoins.data.coins[x].name )
@@ -199,7 +201,7 @@ function checkInput(search_item){
     //check to see if the coin matches one in the array
     if(!(search_coin in coinLIST)){
         //if this check fails it will highlight the search box red
-        $(search_box).attr("class","input is-danger");
+        $(search_box).attr("class","input is-danger is-rounded");
         //show a text hint that the search was unsuccessfull
         $(search_box).parent().prepend("<p class='help temp'>Unable to find coin</p>")
 
@@ -233,7 +235,6 @@ $("#search_box").on("submit", event => {
 //will also load the last viewed coin if the user returns
 (function(){
     
-    //add if statement here about if a local key exists and load that instead of the default
     let coin = JSON.parse(localStorage.getItem('coin'))
     
     coin == undefined ? getData('BITCOIN') : getData(coin);
@@ -256,14 +257,14 @@ function populateTable(){
     symbol.text(myCoinDetails.symbol()); // Symbol of coin example being BTC for bitcoin.
 };
 
-   
 document.querySelector(".accordion").addEventListener("click", function() {
     var panel = this.nextElementSibling;
     panel.style.display === "block" ?  panel.style.display = "none" : panel.style.display = "block";
 
 });
 
-// news article functions below
+
+// news articles function below
 
 function makeNewscards() {
 
@@ -278,13 +279,17 @@ function makeNewscards() {
     // use for loop to create an object with data pairs to send to newscard string
 
     for(var i = 0; i < storiesCount; i++){
+
+        // convert provided datePublished data to usable date and time
+        var convertedDate = new Date(myCoinNews.theNews().value[i].datePublished).toLocaleString("en-US");
+
+        
         var story = {
             headline: myCoinNews.theNews().value[i].name,
-            timestamp: myCoinNews.theNews().value[i].datePublished,
+            timestamp: convertedDate,
             summary: myCoinNews.theNews().value[i].description,
             link: myCoinNews.theNews().value[i].url,
-            source: myCoinNews.theNews().value[i].provider[0].name,
-            sourceLogo: myCoinNews.theNews().value[i].provider[0].image.thumbnail.contentUrl         
+            source: myCoinNews.theNews().value[i].provider[0].name,    
         };
 
         // need to separate out picture variable because some articles have no associated image
@@ -301,6 +306,16 @@ function makeNewscards() {
                 picture = picture.slice(0,index)
             }
 
+        // need to separate out sourceLogo variable because some sources have no associated image
+        var sourceLogo = myCoinNews.theNews().value[i].provider[0].image
+
+            // insert a placeholder image when no image is found
+            if (sourceLogo === undefined) {
+                sourceLogo = "sourceLogo-placeholder-image.png"
+            } else {
+                sourceLogo = myCoinNews.theNews().value[i].provider[0].image.thumbnail.contentUrl
+            }
+
         // set variable to add cards to correct area of html
         var cardsDiv = document.querySelector('#cards-div');
 
@@ -310,7 +325,7 @@ function makeNewscards() {
           <div class="card">
             <div class="card-image">
               <figure class="image is-16by9 image-news">
-                <a href="${story.link}"><img src=${picture} alt="default news story image" target="_blank"></a>
+                <a href="${story.link}" target="_blank"><img src=${picture} alt="default news story image"></a>
               </figure>
             </div>
             <div class="card-content columns is-multiline">
@@ -319,7 +334,7 @@ function makeNewscards() {
                 </div> 
                 <div class="column is-one-quarter media">                    
                     <figure class="image is-48x48">
-                      <img src="${story.sourceLogo}" alt="news source logo">
+                      <img src="${sourceLogo}" alt="news source logo">
                     </figure>
                 </div>
                 <div class="column is-three-quarters">
