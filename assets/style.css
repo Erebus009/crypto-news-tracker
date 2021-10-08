@@ -169,6 +169,16 @@ height: 350px;
     position: relative;
 }
   
+#coin_name, #coin_price{
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0.75rem;
+}
+
+#coin_header{
+    border-bottom: var(--color_M) solid 2px;
+}
 
 #myChart{
     border-top: var(--color_M) solid 2px;
@@ -177,10 +187,9 @@ height: 350px;
 .help{
     position: absolute;
     top: -35px;
-    background-color: red;
-    border-radius: 15px;
-    color: var(--color_B);
+    color: red;
     padding: 5px;
+
 }
 
 
