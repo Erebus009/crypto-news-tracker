@@ -113,8 +113,8 @@ function loadGraph(){
     $("#coin_price").children("span").text("(" + myCoinDetails.change() + "%)")//add % change
 
     //chang the color of the % change to highlight if pos or neg change
-    myCoinDetails.change() < 0 ? $("#coin_price").children("span").attr("class","neg_trend") :
-    $("#coin_price").children("span").attr("class","pos_trend");
+    myCoinDetails.change() < 0 ? $("#coin_price").children("span").attr("class","neg_trend is-size-4") :
+    $("#coin_price").children("span").attr("class","pos_trend is-size-4");
     
 
     //build two arrays with the data pulled from the API
