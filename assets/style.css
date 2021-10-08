@@ -4,6 +4,15 @@
     --color_C: #ffffff;
     --color_D: #cec5c5;
     --color_E: #c4c0c0;
+    --color_J: #5265AB;
+    --color_K: #ADBFFF;
+    --color_L: #8FA6F7;
+    --color_M: #AB8F41;
+    --color_N: #F7DC8F;
+    --color_O: #F9F1DB;
+    --color_P: #FAFBFF;
+    --color_Q: #E0D9C5;
+
 }
 
 * {
@@ -11,13 +20,18 @@
     
   }
 
-  body{
-      background-color: var(--color_C);
-   
+  body {
+      background-color: var(--color_O);
+      font-family: 'Bai Jamjuree', sans-serif;
   }
 
   h1{
       text-decoration: underline;
+      font-family: 'Chakra Petch', sans-serif;
+  }
+
+  table {
+  border-radius: 15px
   }
 
 .image-news img {
@@ -32,9 +46,10 @@
 }
 .coin-symbol{
   
-    height: 25px;
-    width: 25px;
+    height: 40px;
+    width: 40px;
     margin-left: 5px;
+    margin-top: 10px;
 }
 
 .graph_title{
@@ -42,7 +57,7 @@
 }
 
 .pos_trend{
-    color: green;
+    color: rgb(0, 199, 0);
 
 }
 
@@ -62,7 +77,7 @@ height: 350px;
 }
 
 .accordion {
-    background-color: var(--color_A);
+    background-color: var(--color_Q);
     color: rgb(0, 0, 0);
     cursor: pointer;
     padding: 10px;
@@ -105,7 +120,7 @@ height: 350px;
       background-color: var(--color_C);
   }
  .section{
-     background-color: var(--color_B);
+     background-color: var(--color_K);
      
  }
  
@@ -117,6 +132,38 @@ height: 350px;
   .color_E{
       background-color: var(--color_E);
   }
+  
+  .color_J{
+      background-color: var(--color_J);
+  }
+
+  .color_K{
+      background-color: var(--color_K);
+  }
+
+ .color_L{
+      background-color: var(--color_L);
+  }
+
+  .color_M{
+      background-color: var(--color_M);
+  }
+
+  .color_N{
+      background-color: var(--color_N);
+  }
+
+  .color_O{
+      background-color: var(--color_O);
+  }
+
+  .color_P{
+      background-color: var(--color_P);
+  }
+
+  .color_Q{
+      background-color: var(--color_Q);
+  }
 
 #coin_search{
     position: relative;
@@ -124,7 +171,7 @@ height: 350px;
   
 
 #myChart{
-    border-top: var(--color_E) solid 2px;
+    border-top: var(--color_M) solid 2px;
 }
 
 .help{
@@ -151,5 +198,5 @@ height: 350px;
   }
 
   #ticker{
-      background-color: var(--color_C);
+      background-color: var(--color_P);
   }
