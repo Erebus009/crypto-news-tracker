@@ -237,7 +237,7 @@ $("#search_box").on("submit", event => {
     
     let coin = JSON.parse(localStorage.getItem('coin'))
     
-    coin == undefined ? getData('BITCOIN') : getData(coin);
+    coin == undefined ? getData("BITCOIN") : getData(coin);
 
 })();
 
