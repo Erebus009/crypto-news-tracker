@@ -101,14 +101,38 @@ const coinLIST = {
   JUNO: "TZHFJDasH",
 };
 
+async function getCoinsUUID(){
+  fetch("https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "coinranking1.p.rapidapi.com",
+		"x-rapidapi-key": "50e2e462f8msh7a5c1f25c65202ep1015a0jsn0a57f58b48d8"
+	}
+})
+.then(response => { response.json().then(data =>{
+    for(let i = 0; data.data.coin.length > i; i++){
+      let coinName = data.data.coins[i].name.toUpperCase().replace(/\s/g,"");
+      let coinUUID = data.data.coins[i].uuid;
 
+      coinLIST[coinName] = coinUUID;
+      
+      localStorage.setItem("coinlist", JSON.stringify(coinLIST))
+
+      
+    }
+  });
+})
+.catch(err => {
+	console.error(err);
+});
+}
 
 
 //this is the main object and constructor for the coin that is being searched from the API and used to build the elements of the we site
 //this is created dynamically based on the coin being passed, must match a coin in the "coinLIST" object array
 const coin = async (coinType, time = 0) => {
   //get the ID from the "coinList" array to match the format required by the API, can not search by just the name
-  
+  getCoinsUUID()
   let coinAPI =  "https://coinranking1.p.rapidapi.com/coin/" + coinLIST[coinType];
 
   //this checks to see if there is a time stamp passed and append it to the API url
