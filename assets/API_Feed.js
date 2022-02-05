@@ -1,54 +1,105 @@
 const coinLIST = {
   BITCOIN: "Qwsogvtv82FCd",
-   ETHEREUM: "razxDUgYGNAdQ",
-  TETHER: "HIVsRcGKkPFtW",
-  BINANCE: "WcwrkfNI4FUAe",
+  ETHEREUM: "razxDUgYGNAdQ",
+  TETHERUSD: "HIVsRcGKkPFtW",
+  BINANCECOIN: "WcwrkfNI4FUAe",
   HEX: "9K7m6ufraZ6gh",
   USDC: "aKzUVe4Hh_CON",
-  CARDANO: "qzawljRxB5bYu",
   SOLANA: "zNZHO_Sjf",
+  CARDANO: "qzawljRxB5bYu",
   XRP: "-l8Mn2pVlRs-p",
-  TERRA: "AaQUAs2Mc",
   POLKADOT: "25W7FG7om",
+  TERRA: "AaQUAs2Mc",
   DOGECOIN: "a91GCGd_u96cF",
   AVALANCHE: "dvUj0CzDZ",
-  SHIBA: "xz24e0BjL",
+  BINANCEUSD: "vSo2fu9iE1s0Y",
+  BITDAO: "N2IgQ9Xme",
+  SHIBAINU: "xz24e0BjL",
   POLYGON: "uW2tk-ILY0ii",
+  WRAPPEDBTC: "x4WXHge-vvFY",
   DAI: "MoTuySvg7",
   COSMOS: "Knsels4_Ol-Ny",
   LITECOIN: "D7B1x_ks7WhV5",
-  CRYPTO: "65PHZTpmE55b",
+  "CRYPTO.COMCHAIN": "65PHZTpmE55b",
   CHAINLINK: "VLqpJwogdhHNb",
-  NEAR: "DCrsaMv68",
+  NEARPROTOCOL: "DCrsaMv68",
   UNISWAP: "_H5FVG9iW",
-  ALGORAND: "TpHE2IShQw-sJ",
+  SENSO: "ZO4D7EBy3",
   TRON: "qUhEFk1I61atv",
-  OKB: "PDKcptVnzJTmN",
-  FTX: "NfeOYfNcl",
+  ALGORAND: "TpHE2IShQw-sJ",
   DECENTRALAND: "tEf7-dnwV3BXS",
-  STELLAR: "f3iaFeCKEmkaZ",
-  HEDERA: "jad286TjB",
-  FANTOM: "uIEWfMFnQo9K_",
+  FTXTOKEN: "NfeOYfNcl",
+  WEMIXTOKEN: "08CsQa-Ov",
+  BITCOINCASH: "ZlZpzOJo43mIo",
+  BLOKTOPIA: "sfab31CXM",
+  OKB: "PDKcptVnzJTmN",
+  LIDOSTAKEDETHER: "VINVMYf0u",
+  HEDERAHASHGRAPH: "jad286TjB",
   LEO: "mqtUpyBxu8O8",
+  "INTERNETCOMPUTER(DFINITY)": "aMNLwaUbY",
+  STELLAR: "f3iaFeCKEmkaZ",
+  THESANDBOX: "pxtKbG5rg",
   VECHAIN: "FEbS54wxo4oIl",
-  ETHER: "p_GHkOeDNKw0",
-  THETA: "B42IRxNtoYmwK",
-  AXIE: "gpRKmM16k",
-  KLAYTN: "M9bj_WrX",
-  PANCAKESWAP: "ncYFcP709",
-  SANDBOX: "pxtKbG5rg",
-  HELIUM: "rGDiacWtB",
-  ETHEREUM: "hnfQfsYfeIGUQ",
-  ELROND: "omwkOTglq",
-  FRAX: "KfWtaeV1W",
-  MONERO: "3mVx2FX_iJFp5",
+  FANTOM: "uIEWfMFnQo9K_",
+  COMPOUNDETHER: "p_GHkOeDNKw0",
   TEZOS: "fsIbGOEJWbzxG",
-  INCH: "lD9digIOk",
-  ALL: "s",
+  ETHEREUMCLASSIC: "hnfQfsYfeIGUQ",
+  AXIEINFINITY: "gpRKmM16k",
+  ELROND: "omwkOTglq",
+  THETATOKEN: "B42IRxNtoYmwK",
+  GERACOIN: "o-c5MkMCx",
+  PANCAKESWAP: "ncYFcP709",
+  MONERO: "3mVx2FX_iJFp5",
+  HELIUM: "rGDiacWtB",
+  KLAYTN: "M9bj_WrX",
+  MAGICINTERNETMONEY: "lORNHeWV9",
+  FRAX: "KfWtaeV1W",
+  "1INCHTOKEN": "lD9digIOk",
+  IOTA: "LtWwuVANwRzV_",
+  COMPOUNDDAI: "lT__vMO7l",
+  OSMOSIS: "yecsF9VkR",
+  EOS: "iAzbfXiBBKkR6",
+  AMP: "7oCgI0fI3",
+  HARMONY: "XtW6kus088In",
+  AAVE: "ixgUfzmLR",
+  MAKER: "qFakph2rpuMOL",
+  TERRAUSD: "cKExCczgV",
+  FLOW: "QQ0NCmjVq",
+  GALA: "zfVt1uA3P",
+  FILECOIN: "ymQub4fuB",
+  WOOTRADE: "k-J3YwacF",
+  CELSIUSNETWORK: "rk5XwL6mIjUDp",
+  BITCOINSV: "VcMY11NONHSA0",
+  ARWEAVE: "7XWg41D1",
+  HUOBIBTC: "upmyKdAQ",
+  KUSAMA: "ePlOuwd_e",
+  LIDODAOTOKEN: "Pe93bIOD2",
+  NEO: "cVaOmQWainv7g",
+  ZCASH: "aRGRWLf2RYNq4",
+  ECASH: "aQx_vW8s1",
+  CURVEDAOTOKEN: "QGbUTVMjG",
+  RAVENCOIN: "Ru56fDlLB56-v",
+  THEGRAPH: "qhd1biQ7M",
+  HUOBITOKEN: "DXwP4wF9ksbBO",
+  KUCOINTOKEN: "LOO6LmXd7G84Z",
+  ENJINCOIN: "hG9iQlgtdwCvc",
+  STACKS: "mMPrMcB7",
+  NEXO: "Hi6jNXshVh9FA",
+  CONVEXFINANCE: "sQ77akpUH",
+  BASICATTENTIONTOKEN: "pOnT-qfd-RN7W",
+  WAXECONOMICTOKEN: "Zn0_0EpSb",
+  UNITPAYMENTINTERNATIONAL: "yl8ZR2fsxHPs",
+  QUANT: "bauj_21eYVwso",
+  CELO: "RLzoWH76m",
+  FRAXSHARE: "3nNpuxHJ8",
+  CHILIZ: "GSCt2y6YSgO26",
+  ECOMI: "_xNnBDfLq2pF5",
+  ONE: "6Lga5NiXX3rT",
+  TRUEUSD: "1ZZI6g5k5royD",
+  MOBILECOIN: "IMmiXaCp0",
+  SYNTHETIXNETWORK: "sgxZRXbK0FDc",
+  JUNO: "TZHFJDasH",
 };
-
-
-
 
 
 
@@ -57,10 +108,8 @@ const coinLIST = {
 //this is created dynamically based on the coin being passed, must match a coin in the "coinLIST" object array
 const coin = async (coinType, time = 0) => {
   //get the ID from the "coinList" array to match the format required by the API, can not search by just the name
-
-
-  let coinAPI =
-    "https://coinranking1.p.rapidapi.com/coin/" + coinLIST[coinType];
+  
+  let coinAPI =  "https://coinranking1.p.rapidapi.com/coin/" + coinLIST[coinType];
 
   //this checks to see if there is a time stamp passed and append it to the API url
   //the default is 0 if no param is passed to the function and the default search will be passed
@@ -69,16 +118,13 @@ const coin = async (coinType, time = 0) => {
   }
 
   //pass the dynamic coin URL to the fetch function to return the results
-  let coinDetails = await getCoin(coinAPI);
+  let coinDetails =  await getCoin(coinAPI);
 
   //return the functions based on the param passed to the function
   //the default returns are based on time = 0, so no time param being used
   if (time === 0) {
-    
-
     return {
       all: () => coinDetails,
-      uuid: () => coinDetails.data.coin.uuid,
       name: () => coinDetails.data.coin.name,
       symbol: () => coinDetails.data.coin.symbol,
       price: () => coinDetails.data.coin.price,
@@ -91,9 +137,7 @@ const coin = async (coinType, time = 0) => {
       coinDesc: () => coinDetails.data.coin.description,
       link: () => coinDetails.data.coin.links[0].name,
       symbol: () => coinDetails.data.coin.symbol,
-      
     };
-    
   } else {
     return {
       all: () => coinDetails,
@@ -102,7 +146,6 @@ const coin = async (coinType, time = 0) => {
     };
   }
 };
-
 
 //fetch request to get coin details, will return back to "coin" function
 //url will change based on a dynamic reqest
@@ -115,6 +158,7 @@ async function getCoin(url) {
         "x-rapidapi-key": "50e2e462f8msh7a5c1f25c65202ep1015a0jsn0a57f58b48d8",
       },
     });
+
     if (!response.ok) {
       throw new Error(`API error! status: ${response.status}`);
     } else {

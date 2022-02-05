@@ -26,10 +26,10 @@ let allCoins;
 // https://maze.digital/webticker/
 //js is manually added to the file as assets/websticker.min.js, is not an SDN link
 async function coinMarquee() {
-
+    
     //grab all the coins from the API
     allCoins =  await getCoin("https://coinranking1.p.rapidapi.com/coins/")
-
+    
     //for each coin, build an <li> element to append to the UL that the marquee scripts will animate
     for(let x = 0; x < allCoins.data.coins.length; x++){
         let $mainDIV = $("<li>");
@@ -73,8 +73,10 @@ async function coinMarquee() {
 //this is called both when the page loads and after user input
 //once all calls are complete will call the function to load the remaining elements
 async function getData(search_coin){
+  
     
     //go fetch API for both the news and the coin details based on the 'search_coin'
+    
     myCoinDetails = await coin(search_coin);
     myCoinDetails24h = await coin(search_coin, "24h")
     myCoinNews = await news(search_coin); 
@@ -89,14 +91,17 @@ function loadPage(){
     //build and load main graph on the page
     loadGraph();
 
+    //build and load the marquee at the top of the coin section
+    coinMarquee();
+
     //fill in all coin details under the graph
     populateTable();
  
     //create and load news cards below coin details
     makeNewscards();
 
-    //build and load the marquee at the top of the coin section
-    coinMarquee();
+    
+    
 }
 
 //this function builds and loads the graph showing the price change for the selected coin
@@ -193,13 +198,14 @@ function checkInput(search_item){
     let search_coin = search_item.toUpperCase();
     //trim any white space, just in case
     search_coin =  search_coin.trim();
-    //then turn remaining spaces to "_", this is because the object array keys can not have spaces in them
-    search_coin = search_coin.replace(" ","_");
+    
+    
     
     
 
     //check to see if the coin matches one in the array
     if(!(search_coin in coinLIST)){
+        
         //if this check fails it will highlight the search box red
         $(search_box).attr("class","input is-danger is-rounded");
         //show a text hint that the search was unsuccessfull
@@ -236,8 +242,9 @@ $("#search_box").on("submit", event => {
 (function(){
     
     let coin = JSON.parse(localStorage.getItem('coin'))
-    
-    coin == undefined ? getData("BITCOIN") : getData(coin);
+   
+    coin == undefined ? getData('BITCOIN') : getData(coin);
+  
 
 })();
 
