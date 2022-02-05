@@ -162,3 +162,10 @@ height: 350px;
   #ticker{
       background-color: var(--color_P);
   }
+
+  @media screen and (max-width: 768px){
+  .column.is-half-mobile {
+      flex: none;
+      width: 10%;
+  }
+}

@@ -1,6 +1,6 @@
 const coinLIST = {
   BITCOIN: "Qwsogvtv82FCd",
-  ETHEREUM: "razxDUgYGNAdQ",
+   ETHEREUM: "razxDUgYGNAdQ",
   TETHER: "HIVsRcGKkPFtW",
   BINANCE: "WcwrkfNI4FUAe",
   HEX: "9K7m6ufraZ6gh",
@@ -57,6 +57,8 @@ const coinLIST = {
 //this is created dynamically based on the coin being passed, must match a coin in the "coinLIST" object array
 const coin = async (coinType, time = 0) => {
   //get the ID from the "coinList" array to match the format required by the API, can not search by just the name
+
+
   let coinAPI =
     "https://coinranking1.p.rapidapi.com/coin/" + coinLIST[coinType];
 
